@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqablqofb623"]
+
+[ext_resource type="Script" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.cs" id="1_1n44b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hgtyn"]
+font_size = 32
+
+[node name="LoadGameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1n44b")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -196.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load Game"
+label_settings = SubResource("LabelSettings_hgtyn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 648.0
+offset_top = 132.0
+offset_right = -448.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "x"
+
+[node name="LoadButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = 132.0
+offset_right = -512.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load"
+
+[node name="LoadGameDataItems" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 384.0
+offset_top = -132.0
+offset_right = -384.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadGameDataItems"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameDataItems/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[connection signal="pressed" from="DeleteButton" to="." method="onDeleteButtonPressed"]
+[connection signal="pressed" from="LoadButton" to="." method="onLoadButtonPressed"]
