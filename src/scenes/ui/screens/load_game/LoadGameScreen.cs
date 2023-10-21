@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class LoadGameScreen : Control
+public partial class LoadGameScreen : Screen
 {
     private LoadGameDataItem _activeLoadGameDataItem;
     private PackedScene _loadGameDataItem = GD.Load<PackedScene>("src/scenes/ui/screens/load_game/LoadGameDataItem.tscn");
@@ -13,7 +13,20 @@ public partial class LoadGameScreen : Control
 
     public override void _Ready()
     {
+        base._Ready();
         _loadGameDataItems = GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer");
+        _deleteButton = GetNode<Button>("DeleteButton");
+        _loadButton = GetNode<Button>("LoadButton");
+        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
+    }
+
+    public override void Enter()
+    {
+        // refresh LoadGameDataItems
+        foreach (LoadGameDataItem loadGameDataItem in _loadGameDataItems.GetChildren())
+        {
+            loadGameDataItem.QueueFree();
+        }
 
         foreach (string file in DirAccess.GetFilesAt("data"))
         {
@@ -22,10 +35,6 @@ public partial class LoadGameScreen : Control
             loadGameDataItem.Pressed += onLoadGameDataItemPressed;
             _loadGameDataItems.AddChild(loadGameDataItem);
         }
-
-        _deleteButton = GetNode<Button>("DeleteButton");
-        _loadButton = GetNode<Button>("LoadButton");
-        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
     }
 
     public override void _Process(double delta)
@@ -42,24 +51,12 @@ public partial class LoadGameScreen : Control
 
     private void onLoadButtonPressed()
     {
-        if (_activeLoadGameDataItem == null)
-        {
-            GD.Print("LoadGameScreen: onLoadButtonPressed(): Failed to load, no _activeLoadGameDataItem");
-            return;
-        }
-
         _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
         _gameDataController.LoadGame();
     }
 
     private void onDeleteButtonPressed()
     {
-        if (_activeLoadGameDataItem == null)
-        {
-            GD.Print("LoadGameScreen: onDeleteButtonPressed(): Failed to delete, no _activeLoadGameDataItem");
-            return;
-        }
-
         _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
         _gameDataController.DeleteGame();
         _activeLoadGameDataItem.QueueFree();

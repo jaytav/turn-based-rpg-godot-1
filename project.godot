@@ -17,6 +17,11 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 [autoload]
 
 GameDataController="*res://src/autoload/GameDataController.cs"
+ScreenController="*res://src/autoload/ScreenController.cs"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [dotnet]
 

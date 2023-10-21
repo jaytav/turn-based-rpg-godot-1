@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class NewGameScreen : Control
+public partial class NewGameScreen : Screen
 {
     private LineEdit _nameLineEdit;
 
@@ -8,14 +8,21 @@ public partial class NewGameScreen : Control
 
     public override void _Ready()
     {
+        base._Ready();
         _nameLineEdit = GetNode<LineEdit>("NameLineEdit");
+        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
     }
 
-    private void onButtonPressed()
+    public override void Enter()
+    {
+        _nameLineEdit.Clear();
+    }
+
+    private void onCreateButtonPressed()
     {
         if (_nameLineEdit.Text.Length == 0)
         {
-            GD.Print("NewGameScreen: onButtonPressed(): Failed, name is empty");
+            GD.PushWarning("NewGameScreen: onCreateButtonPressed(): Failed, name is empty");
             return;
         }
 
@@ -25,5 +32,7 @@ public partial class NewGameScreen : Control
         gameData.ResourcePath = $"data/{gameData.GetInstanceId()}.tres";
         _gameDataController.ActiveGameData = gameData;
         _gameDataController.SaveGame();
+
+        ScreenController.ChangeScreen("LoadGameScreen");
     }
 }

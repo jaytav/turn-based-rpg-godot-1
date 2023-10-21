@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=5 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
 [ext_resource type="PackedScene" uid="uid://rtev2lys4wnb" path="res://src/scenes/ui/screens/new_game/NewGameScreen.tscn" id="2_2wkdg"]
+[ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_gejv4")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="MainMenuScreen" parent="UI" instance=ExtResource("2_r25fk")]
+visible = false
+
 [node name="NewGameScreen" parent="UI" instance=ExtResource("2_2wkdg")]
 visible = false
 
 [node name="LoadGameScreen" parent="UI" instance=ExtResource("2_0j88g")]
+visible = false
