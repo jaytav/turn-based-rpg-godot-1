@@ -9,6 +9,8 @@ public partial class LoadGameScreen : Control
     private Button _deleteButton;
     private Button _loadButton;
 
+    private GameDataController _gameDataController;
+
     public override void _Ready()
     {
         _loadGameDataItems = GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer");
@@ -23,10 +25,12 @@ public partial class LoadGameScreen : Control
 
         _deleteButton = GetNode<Button>("DeleteButton");
         _loadButton = GetNode<Button>("LoadButton");
+        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
     }
 
     public override void _Process(double delta)
     {
+        // disable delete and load buttons when _activeLoadGameDataItem is not set
         _deleteButton.Disabled = !GodotObject.IsInstanceValid(_activeLoadGameDataItem);
         _loadButton.Disabled = !GodotObject.IsInstanceValid(_activeLoadGameDataItem);
     }
@@ -44,8 +48,8 @@ public partial class LoadGameScreen : Control
             return;
         }
 
-        GD.Print($"LoadGameScreen: onLoadButtonPressed(): Loading game data {_activeLoadGameDataItem.GameData.ResourceName}");
-        // load game here
+        _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
+        _gameDataController.LoadGame();
     }
 
     private void onDeleteButtonPressed()
@@ -56,8 +60,8 @@ public partial class LoadGameScreen : Control
             return;
         }
 
-        GD.Print($"LoadGameScreen: onDeleteButtonPressed(): Deleting game data ({_activeLoadGameDataItem.GameData.ResourceName})");
-        DirAccess.RemoveAbsolute(_activeLoadGameDataItem.GameData.ResourcePath);
+        _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
+        _gameDataController.DeleteGame();
         _activeLoadGameDataItem.QueueFree();
     }
 }

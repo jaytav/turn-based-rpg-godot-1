@@ -4,6 +4,8 @@ public partial class NewGameScreen : Control
 {
     private LineEdit _nameLineEdit;
 
+    private GameDataController _gameDataController;
+
     public override void _Ready()
     {
         _nameLineEdit = GetNode<LineEdit>("NameLineEdit");
@@ -21,7 +23,7 @@ public partial class NewGameScreen : Control
         GameData gameData = new GameData();
         gameData.ResourceName = _nameLineEdit.Text;
         gameData.ResourcePath = $"data/{gameData.GetInstanceId()}.tres";
-
-        ResourceSaver.Save(gameData);
+        _gameDataController.ActiveGameData = gameData;
+        _gameDataController.SaveGame();
     }
 }
