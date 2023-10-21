@@ -14,6 +14,10 @@ config/name="TurnBasedRPGGodot"
 run/main_scene="res://src/scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 
+[autoload]
+
+GameDataController="*res://src/autoload/GameDataController.cs"
+
 [dotnet]
 
 project/assembly_name="TurnBasedRPGGodot"
