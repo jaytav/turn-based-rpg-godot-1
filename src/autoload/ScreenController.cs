@@ -11,6 +11,14 @@ public partial class ScreenController : Node
         ChangeScreen("MainMenuScreen");
     }
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event.IsActionPressed("Exit"))
+        {
+            ChangeScreen("MainMenuScreen");
+        }
+    }
+
     public void ChangeScreen(string screenName)
     {
         if (_ui.GetNodeOrNull(screenName) == null)
