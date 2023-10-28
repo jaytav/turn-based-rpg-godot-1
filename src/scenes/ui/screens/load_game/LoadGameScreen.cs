@@ -23,11 +23,11 @@ public partial class LoadGameScreen : Screen
         // add to same button group so that they know when each other are pressed
         ButtonGroup loadGameItemButtonGroup = new ButtonGroup();
 
-        string[] files = DirAccess.GetFilesAt("res://data");
+        string[] files = DirAccess.GetFilesAt("res://data/games");
 
         // sort game data files by modified date desc
         System.Array.Sort(files, (string a, string b) =>
-            FileAccess.GetModifiedTime($"res://data/{a}") < FileAccess.GetModifiedTime($"res://data/{b}") ? 1 : 0
+            FileAccess.GetModifiedTime($"res://data/games/{a}") < FileAccess.GetModifiedTime($"res://data/games/{b}") ? 1 : 0
         );
 
         string firstFile = files[0];
@@ -35,7 +35,7 @@ public partial class LoadGameScreen : Screen
         foreach (string file in files)
         {
             LoadGameItem loadGameItem = _loadGameItem.Instantiate<LoadGameItem>();
-            loadGameItem.GameData = GD.Load<GameData>($"res://data/{file}");
+            loadGameItem.GameData = GD.Load<GameData>($"res://data/games/{file}");
             loadGameItem.Pressed += onLoadGameItemPressed;
             loadGameItem.GetNode<Button>("Button").ButtonGroup = loadGameItemButtonGroup;
             GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer").AddChild(loadGameItem);

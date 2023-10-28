@@ -31,9 +31,7 @@ public partial class GameDataController : Node
         // game data doesn't exist yet, initialise folders
         if (!FileAccess.FileExists(gameData.ResourcePath))
         {
-            DirAccess.MakeDirAbsolute("res://data"); // data directory
-            DirAccess.MakeDirAbsolute(gameDataDir); // game data directory
-            DirAccess.MakeDirAbsolute(gameStateDataDir); // game state data directory
+            DirAccess.MakeDirRecursiveAbsolute(gameStateDataDir); // game state data directory
         }
 
         GameStateData gameStateData = new GameStateData();
@@ -43,6 +41,12 @@ public partial class GameDataController : Node
 
         ResourceSaver.Save(gameStateData);
         ResourceSaver.Save(gameData);
+
+        // set config game data and game state data
+        ConfigData configData = GetNode<ConfigController>("/root/ConfigController").ConfigData;
+        configData.GameStateData = gameStateData;
+        configData.GameData = gameData;
+        ResourceSaver.Save(configData);
     }
 
     public void DeleteGame(GameData gameData = null)
@@ -62,6 +66,16 @@ public partial class GameDataController : Node
         foreach (string file in DirAccess.GetFilesAt(gameStateDataDir))
         {
             DirAccess.RemoveAbsolute($"{gameStateDataDir}/{file}"); // game state data
+        }
+
+        ConfigData configData = GetNode<ConfigController>("/root/ConfigController").ConfigData;
+
+        // if config has deleted game data referenced, unset game data and game state data
+        if (configData.GameData == gameData)
+        {
+            configData.GameData = null;
+            configData.GameStateData = null;
+            ResourceSaver.Save(configData);
         }
 
         DirAccess.RemoveAbsolute(gameStateDataDir); // game states data directory

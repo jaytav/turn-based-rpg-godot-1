@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 
 GameDataController="*res://src/autoload/GameDataController.cs"
 ScreenController="*res://src/autoload/ScreenController.cs"
+ConfigController="*res://src/autoload/ConfigController.cs"
 
 [display]
 
