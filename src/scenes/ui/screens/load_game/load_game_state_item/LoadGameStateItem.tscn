@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://rmhq7kco1oul"]
+
+[ext_resource type="Script" path="res://src/scenes/ui/screens/load_game/load_game_state_item/LoadGameStateItem.cs" id="1_ie4yi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k84tq"]
+font_size = 12
+
+[node name="LoadGameStateItem" type="Button"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = -1
+anchor_right = 0.388889
+anchor_bottom = 0.0493827
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+script = ExtResource("1_ie4yi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game State Data Name"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ModifiedTime" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -16.0
+offset_right = -8.00015
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0000-00-00T00:00:00"
+label_settings = SubResource("LabelSettings_k84tq")
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3

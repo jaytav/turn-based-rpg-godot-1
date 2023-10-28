@@ -5,8 +5,11 @@ public partial class ScreenController : Node
     private Node _ui;
     private Screen _activeScreen;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
+        // wait for scene ready before changing screen
+        await ToSignal(GetNode("/root/Main"), "ready");
+
         _ui = GetNode("/root/Main/UI");
         ChangeScreen("MainMenuScreen");
     }

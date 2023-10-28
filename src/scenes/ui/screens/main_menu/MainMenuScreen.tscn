@@ -41,6 +41,8 @@ offset_right = -512.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "New Game"
 
 [node name="LoadGameButton" type="Button" parent="."]
@@ -55,6 +57,7 @@ offset_right = -512.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 text = "Load Game"
 
 [connection signal="pressed" from="NewGameButton" to="." method="onNewGameButtonPressed"]

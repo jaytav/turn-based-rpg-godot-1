@@ -2,63 +2,57 @@ using Godot;
 
 public partial class LoadGameScreen : Screen
 {
-    private LoadGameDataItem _activeLoadGameDataItem;
-    private PackedScene _loadGameDataItem = GD.Load<PackedScene>("src/scenes/ui/screens/load_game/LoadGameDataItem.tscn");
-    private VBoxContainer _loadGameDataItems;
+    private GameData _selectedGameData;
+    private GameStateData _selectedGameStateData;
+    private PackedScene _loadGameItem = GD.Load<PackedScene>("src/scenes/ui/screens/load_game/load_game_item/LoadGameItem.tscn");
 
-    private Button _deleteButton;
-    private Button _loadButton;
-
-    private GameDataController _gameDataController;
-
-    public override void _Ready()
+    public override void _Process(double delta)
     {
-        base._Ready();
-        _loadGameDataItems = GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer");
-        _deleteButton = GetNode<Button>("DeleteButton");
-        _loadButton = GetNode<Button>("LoadButton");
-        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
+        // disable delete and load buttons when _selectedGameStateData is not set
+        GetNode<Button>("LoadButton").Disabled = !GodotObject.IsInstanceValid(_selectedGameData);
     }
 
     public override void Enter()
     {
         // refresh LoadGameDataItems
-        foreach (LoadGameDataItem loadGameDataItem in _loadGameDataItems.GetChildren())
+        foreach (LoadGameItem loadGameDataItem in GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer").GetChildren())
         {
             loadGameDataItem.QueueFree();
         }
 
-        foreach (string file in DirAccess.GetFilesAt("data"))
+        // add to same button group so that they know when each other are pressed
+        ButtonGroup loadGameItemButtonGroup = new ButtonGroup();
+
+        string[] files = DirAccess.GetFilesAt("res://data");
+
+        // sort game data files by modified date desc
+        System.Array.Sort(files, (string a, string b) =>
+            FileAccess.GetModifiedTime($"res://data/{a}") < FileAccess.GetModifiedTime($"res://data/{b}") ? 1 : 0
+        );
+
+        foreach (string file in files)
         {
-            LoadGameDataItem loadGameDataItem = _loadGameDataItem.Instantiate<LoadGameDataItem>();
-            loadGameDataItem.GameData = GD.Load<GameData>($"data/{file}");
-            loadGameDataItem.Pressed += onLoadGameDataItemPressed;
-            _loadGameDataItems.AddChild(loadGameDataItem);
+            LoadGameItem loadGameItem = _loadGameItem.Instantiate<LoadGameItem>();
+            loadGameItem.GameData = GD.Load<GameData>($"res://data/{file}");
+            loadGameItem.Pressed += onLoadGameItemPressed;
+            loadGameItem.GetNode<Button>("Button").ButtonGroup = loadGameItemButtonGroup;
+            GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer").AddChild(loadGameItem);
         }
     }
 
-    public override void _Process(double delta)
+    private void onLoadGameItemPressed(GameData gameData, GameStateData gameStateData)
     {
-        // disable delete and load buttons when _activeLoadGameDataItem is not set
-        _deleteButton.Disabled = !GodotObject.IsInstanceValid(_activeLoadGameDataItem);
-        _loadButton.Disabled = !GodotObject.IsInstanceValid(_activeLoadGameDataItem);
-    }
 
-    private void onLoadGameDataItemPressed(LoadGameDataItem loadGameDataItem)
-    {
-        _activeLoadGameDataItem = loadGameDataItem;
+        _selectedGameData = gameData;
+        _selectedGameStateData = gameStateData;
+
+        GetNode<Label>("LoadGameStateDetails/Title").Text = gameData.ResourceName;
+        GetNode<Label>("LoadGameStateDetails/Subtitle").Text = gameStateData.ResourceName;
+        GetNode<Label>("LoadGameStateDetails/ModifiedTime").Text = Time.GetDatetimeStringFromUnixTime((long)FileAccess.GetModifiedTime(gameStateData.ResourcePath)).Replace('T', ' ');
     }
 
     private void onLoadButtonPressed()
     {
-        _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
-        _gameDataController.LoadGame();
-    }
-
-    private void onDeleteButtonPressed()
-    {
-        _gameDataController.ActiveGameData = _activeLoadGameDataItem.GameData;
-        _gameDataController.DeleteGame();
-        _activeLoadGameDataItem.QueueFree();
+        GetNode<GameDataController>("/root/GameDataController").LoadGame(_selectedGameData, _selectedGameStateData);
     }
 }

@@ -2,25 +2,23 @@ using Godot;
 
 public partial class NewGameScreen : Screen
 {
-    private LineEdit _nameLineEdit;
-
-    private GameDataController _gameDataController;
-
-    public override void _Ready()
-    {
-        base._Ready();
-        _nameLineEdit = GetNode<LineEdit>("NameLineEdit");
-        _gameDataController = GetNode<GameDataController>("/root/GameDataController");
-    }
-
     public override void Enter()
     {
-        _nameLineEdit.Clear();
+        GetNode<LineEdit>("NameLineEdit").Clear();
+        GetNode<LineEdit>("NameLineEdit").GrabFocus();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_accept"))
+        {
+            GetNode<Button>("CreateButton").EmitSignal("pressed");
+        }
     }
 
     private void onCreateButtonPressed()
     {
-        if (_nameLineEdit.Text.Length == 0)
+        if (GetNode<LineEdit>("NameLineEdit").Text.Length == 0)
         {
             GD.PushWarning("NewGameScreen: onCreateButtonPressed(): Failed, name is empty");
             return;
@@ -28,10 +26,9 @@ public partial class NewGameScreen : Screen
 
         // create and save game
         GameData gameData = new GameData();
-        gameData.ResourceName = _nameLineEdit.Text;
-        gameData.ResourcePath = $"data/{gameData.GetInstanceId()}.tres";
-        _gameDataController.ActiveGameData = gameData;
-        _gameDataController.SaveGame();
+        gameData.ResourceName = GetNode<LineEdit>("NameLineEdit").Text;
+        gameData.ResourcePath = $"res://data/{gameData.GetInstanceId()}.tres";
+        GetNode<GameDataController>("/root/GameDataController").SaveGame(gameData);
 
         ScreenController.ChangeScreen("LoadGameScreen");
     }

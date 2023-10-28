@@ -56,6 +56,8 @@ offset_right = -512.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Create"
 
 [connection signal="pressed" from="CreateButton" to="." method="onCreateButtonPressed"]
