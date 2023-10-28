@@ -11,6 +11,7 @@ public partial class GameDataController : Node
 
         GameData = gameData;
         GameStateData = gameStateData;
+        SaveGame();
     }
 
     public void SaveGame(GameData gameData = null)
@@ -66,17 +67,5 @@ public partial class GameDataController : Node
         DirAccess.RemoveAbsolute(gameStateDataDir); // game states data directory
         DirAccess.RemoveAbsolute(gameDataDir); // game data directory
         DirAccess.RemoveAbsolute(gameData.ResourcePath); // game data
-    }
-
-    public void DeleteGameState(GameStateData gameStateData)
-    {
-        if (gameStateData == null)
-        {
-            GD.PushError($"GameDataController: DeleteGame(): Failed to delete, GameStateData is null");
-            return;
-        }
-
-        GD.Print($"GameDataController: DeleteGameState(): Deleting game state [{gameStateData.ResourceName}]");
-        DirAccess.RemoveAbsolute(gameStateData.ResourcePath);
     }
 }

@@ -10,7 +10,7 @@ public partial class NewGameScreen : Screen
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed("ui_accept"))
+        if (@event.IsActionPressed("ui_text_submit"))
         {
             GetNode<Button>("CreateButton").EmitSignal("pressed");
         }

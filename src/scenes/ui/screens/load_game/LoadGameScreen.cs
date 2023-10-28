@@ -30,6 +30,8 @@ public partial class LoadGameScreen : Screen
             FileAccess.GetModifiedTime($"res://data/{a}") < FileAccess.GetModifiedTime($"res://data/{b}") ? 1 : 0
         );
 
+        string firstFile = files[0];
+
         foreach (string file in files)
         {
             LoadGameItem loadGameItem = _loadGameItem.Instantiate<LoadGameItem>();
@@ -37,12 +39,16 @@ public partial class LoadGameScreen : Screen
             loadGameItem.Pressed += onLoadGameItemPressed;
             loadGameItem.GetNode<Button>("Button").ButtonGroup = loadGameItemButtonGroup;
             GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer").AddChild(loadGameItem);
+
+            if (file == firstFile)
+            {
+                loadGameItem.GetNode<Button>("Button").ButtonPressed = true;
+            }
         }
     }
 
     private void onLoadGameItemPressed(GameData gameData, GameStateData gameStateData)
     {
-
         _selectedGameData = gameData;
         _selectedGameStateData = gameStateData;
 
