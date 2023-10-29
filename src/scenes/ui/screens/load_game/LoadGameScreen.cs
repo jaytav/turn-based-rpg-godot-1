@@ -6,12 +6,6 @@ public partial class LoadGameScreen : Screen
     private GameStateData _selectedGameStateData;
     private PackedScene _loadGameItem = GD.Load<PackedScene>("src/scenes/ui/screens/load_game/load_game_item/LoadGameItem.tscn");
 
-    public override void _Process(double delta)
-    {
-        // disable delete and load buttons when _selectedGameStateData is not set
-        GetNode<Button>("LoadButton").Disabled = !GodotObject.IsInstanceValid(_selectedGameData);
-    }
-
     public override void Enter()
     {
         // refresh LoadGameDataItems
@@ -37,6 +31,7 @@ public partial class LoadGameScreen : Screen
             LoadGameItem loadGameItem = _loadGameItem.Instantiate<LoadGameItem>();
             loadGameItem.GameData = GD.Load<GameData>($"res://data/games/{file}");
             loadGameItem.Pressed += onLoadGameItemPressed;
+            loadGameItem.GameData.Deleted += onLoadGameItemGameDataDeleted;
             loadGameItem.GetNode<Button>("Button").ButtonGroup = loadGameItemButtonGroup;
             GetNode<VBoxContainer>("LoadGameDataItems/ScrollContainer/VBoxContainer").AddChild(loadGameItem);
 
@@ -52,9 +47,28 @@ public partial class LoadGameScreen : Screen
         _selectedGameData = gameData;
         _selectedGameStateData = gameStateData;
 
-        GetNode<Label>("LoadGameStateDetails/Title").Text = gameData.ResourceName;
-        GetNode<Label>("LoadGameStateDetails/Subtitle").Text = gameStateData.ResourceName;
-        GetNode<Label>("LoadGameStateDetails/ModifiedTime").Text = Time.GetDatetimeStringFromUnixTime((long)FileAccess.GetModifiedTime(gameStateData.ResourcePath)).Replace('T', ' ');
+        // enable load game button
+        GetNode<Button>("LoadButton").Disabled = false;
+
+        // display load game state details
+        Control loadGameStateDetailsContainer = GetNode<Control>("LoadGameStateDetails/Container");
+        loadGameStateDetailsContainer.GetNode<Label>("Title").Text = gameData.ResourceName;
+        loadGameStateDetailsContainer.GetNode<Label>("Subtitle").Text = gameStateData.ResourceName;
+        loadGameStateDetailsContainer.GetNode<Label>("ModifiedTime").Text = Time.GetDatetimeStringFromUnixTime((long)FileAccess.GetModifiedTime(gameStateData.ResourcePath)).Replace('T', ' ');
+        loadGameStateDetailsContainer.Visible = true;
+    }
+
+    private void onLoadGameItemGameDataDeleted(GameData gameData)
+    {
+        if (gameData != _selectedGameData)
+        {
+            return;
+        }
+
+        // selected game data deleted, unset variables and hide load game state details
+        _selectedGameData = null;
+        _selectedGameStateData = null;
+        GetNode<Control>("LoadGameStateDetails/Container").Visible = false;
     }
 
     private void onLoadButtonPressed()

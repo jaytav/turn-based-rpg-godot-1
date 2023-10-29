@@ -34,5 +34,6 @@ public partial class GameDataDeleteController : Node
         DirAccess.RemoveAbsolute(gameStateDataDir); // game states data directory
         DirAccess.RemoveAbsolute(gameDataDir); // game data directory
         DirAccess.RemoveAbsolute(gameData.ResourcePath); // game data
+        gameData.EmitSignal(nameof(GameData.Deleted), gameData);
     }
 }

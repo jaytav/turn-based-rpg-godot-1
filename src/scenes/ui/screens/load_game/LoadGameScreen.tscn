@@ -94,7 +94,15 @@ offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="LoadGameStateDetails"]
+[node name="Container" type="Control" parent="LoadGameStateDetails"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -105,7 +113,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Subtitle" type="Label" parent="LoadGameStateDetails"]
+[node name="Subtitle" type="Label" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.190476
@@ -116,7 +124,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ModifiedTime" type="Label" parent="LoadGameStateDetails"]
+[node name="ModifiedTime" type="Label" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.857143
@@ -128,7 +136,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="LoadGameStateDetails"]
+[node name="TextureRect" type="TextureRect" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1875
