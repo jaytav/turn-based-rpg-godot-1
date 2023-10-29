@@ -52,7 +52,7 @@ public partial class LoadGameItem : VBoxContainer
 
     private void onDeleteButtonPressed()
     {
-        GetNode<GameDataController>("/root/GameDataController").DeleteGame(GameData);
+        GetNode<GameDataDeleteController>("/root/GameDataDeleteController").Delete(GameData);
         QueueFree();
     }
 

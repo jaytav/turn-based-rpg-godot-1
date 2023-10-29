@@ -28,6 +28,6 @@ public partial class MainMenuScreen : Screen
     private void onContinueButtonPressed()
     {
         ConfigData configData = GetNode<ConfigController>("/root/ConfigController").ConfigData;
-        GetNode<GameDataController>("/root/GameDataController").LoadGame(configData.GameData, configData.GameStateData);
+        GetNode<GameDataLoadController>("/root/GameDataLoadController").Load(configData.GameData, configData.GameStateData);
     }
 }

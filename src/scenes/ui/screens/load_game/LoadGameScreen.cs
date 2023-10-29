@@ -59,6 +59,6 @@ public partial class LoadGameScreen : Screen
 
     private void onLoadButtonPressed()
     {
-        GetNode<GameDataController>("/root/GameDataController").LoadGame(_selectedGameData, _selectedGameStateData);
+        GetNode<GameDataLoadController>("/root/GameDataLoadController").Load(_selectedGameData, _selectedGameStateData);
     }
 }
