@@ -69,6 +69,7 @@ public partial class LoadGameScreen : Screen
         _selectedGameData = null;
         _selectedGameStateData = null;
         GetNode<Control>("LoadGameStateDetails/Container").Visible = false;
+        GetNode<Button>("LoadButton").Disabled = true;
     }
 
     private void onLoadButtonPressed()
