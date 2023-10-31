@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=10 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
@@ -7,6 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://bnxq20eeqdm45" path="res://src/scenes/ui/screens/character_create/CharacterCreateScreen.tscn" id="5_e7yey"]
 [ext_resource type="PackedScene" uid="uid://nquvw4n71oka" path="res://src/scenes/ui/screens/open_world/OpenWorldScreen.tscn" id="6_fvtds"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s65j3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_caqwx"]
+sky_material = SubResource("ProceduralSkyMaterial_s65j3")
+
+[sub_resource type="Environment" id="Environment_7fa1k"]
+background_mode = 1
+background_color = Color(0.545098, 0.741176, 1, 1)
+sky = SubResource("Sky_caqwx")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Main" type="Node"]
 script = ExtResource("1_gejv4")
 
@@ -14,13 +28,22 @@ script = ExtResource("1_gejv4")
 
 [node name="Characters" type="Node" parent="World"]
 
+[node name="Environment" type="Node" parent="World"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World/Environment"]
+environment = SubResource("Environment_7fa1k")
+
 [node name="CameraContainer" type="Node3D" parent="World"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="Camera" type="Camera3D" parent="World/CameraContainer"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 8)
 projection = 1
-size = 10.0
+size = 20.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
