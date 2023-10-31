@@ -8,14 +8,6 @@ public partial class NewGameScreen : Screen
         GetNode<LineEdit>("NameLineEdit").GrabFocus();
     }
 
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("ui_text_submit"))
-        {
-            GetNode<Button>("CreateButton").EmitSignal("pressed");
-        }
-    }
-
     private void onCreateButtonPressed()
     {
         if (GetNode<LineEdit>("NameLineEdit").Text.Length == 0)
@@ -30,6 +22,6 @@ public partial class NewGameScreen : Screen
         gameData.ResourcePath = $"res://data/games/{gameData.GetInstanceId()}.tres";
         GetNode<GameDataSaveController>("/root/GameDataSaveController").Save(gameData);
 
-        ScreenController.ChangeScreen("LoadGameScreen");
+        ScreenController.ChangeScreen(gameData.GameStates[0].GameMode.Screen);
     }
 }

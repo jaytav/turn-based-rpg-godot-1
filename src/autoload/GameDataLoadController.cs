@@ -16,5 +16,11 @@ public partial class GameDataLoadController : Node
         configData.GameStateData = GameStateData;
         configData.GameData = GameData;
         ResourceSaver.Save(configData);
+
+        // duplicate game state on load, prevent altering already saved game state
+        GameStateData = (GameStateData)gameStateData.Duplicate();
+
+        // set screen based on game mode data
+        GetNode<ScreenController>("/root/ScreenController").ChangeScreen(GameStateData.GameMode.Screen);
     }
 }

@@ -6,7 +6,14 @@ public partial class LoadGameStateItem : Button
 
     public override void _Ready()
     {
-        GetNode<Label>("Title").Text = GameStateData.ResourceName;
+        string title = GameStateData.GameMode.ResourceName;
+
+        if (GameStateData.Characters.Count > 0)
+        {
+            title += $" - {GameStateData.Characters[0].ResourceName}";
+        }
+
+        GetNode<Label>("Title").Text = title;
         GetNode<Label>("ModifiedTime").Text = Time.GetDatetimeStringFromUnixTime((long)FileAccess.GetModifiedTime(GameStateData.ResourcePath)).Replace('T', ' ');
     }
 }

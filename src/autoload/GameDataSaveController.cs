@@ -1,11 +1,11 @@
 using Godot;
-using System;
 
 public partial class GameDataSaveController : Node
 {
     public void Save(GameData gameData = null)
     {
-        gameData = gameData ?? GetNode<GameDataLoadController>("/root/GameDataLoadController").GameData;
+        GameDataLoadController gameDataLoadController = GetNode<GameDataLoadController>("/root/GameDataLoadController");
+        gameData = gameData ?? gameDataLoadController.GameData;
 
         if (gameData == null)
         {
@@ -17,13 +17,18 @@ public partial class GameDataSaveController : Node
         string gameDataDir = gameData.ResourcePath.Substring(0, gameData.ResourcePath.Length - 5);
         string gameStateDataDir = $"{gameDataDir}/game_states";
 
-        // game data doesn't exist yet, initialise folders
+        GameStateData gameStateData = gameDataLoadController.GameStateData ?? new GameStateData();
+
+        // handle new game, initialise data
         if (!FileAccess.FileExists(gameData.ResourcePath))
         {
-            DirAccess.MakeDirRecursiveAbsolute(gameStateDataDir); // game state data directory
+            // game state data directory
+            DirAccess.MakeDirRecursiveAbsolute(gameStateDataDir);
+
+            // game state data game mode
+            gameStateData.GameMode = GD.Load<GameModeData>("res://src/data/game_modes/character_create.tres");
         }
 
-        GameStateData gameStateData = new GameStateData();
         gameStateData.ResourceName = $"game_state_{DirAccess.GetFilesAt(gameStateDataDir).Length.ToString()}";
         gameStateData.ResourcePath = $"{gameStateDataDir}/{gameStateData.ResourceName}.tres";
         gameData.GameStates.Insert(0, gameStateData);
@@ -36,5 +41,8 @@ public partial class GameDataSaveController : Node
         configData.GameStateData = gameStateData;
         configData.GameData = gameData;
         ResourceSaver.Save(configData);
+
+        gameDataLoadController.GameData = gameData;
+        gameDataLoadController.GameStateData = (GameStateData)gameStateData.Duplicate();
     }
 }

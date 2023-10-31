@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cikkty7na5tkn"]
+
+[ext_resource type="Script" path="res://src/data/GameModeData.cs" id="1_8bbsg"]
+
+[resource]
+resource_name = "Open World"
+script = ExtResource("1_8bbsg")
+Screen = "OpenWorldScreen"

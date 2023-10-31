@@ -8,7 +8,7 @@ public partial class LoadGameItem : VBoxContainer
     public GameData GameData;
 
     private VBoxContainer _loadGameStateItems;
-    private PackedScene _loadGameStateItem = GD.Load<PackedScene>("src/scenes/ui/screens/load_game/load_game_state_item/LoadGameStateItem.tscn");
+    private PackedScene _loadGameStateItem = GD.Load<PackedScene>("res://src/scenes/ui/screens/load_game/load_game_state_item/LoadGameStateItem.tscn");
 
     public override void _Ready()
     {
