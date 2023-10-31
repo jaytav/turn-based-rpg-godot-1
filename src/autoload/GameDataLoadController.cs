@@ -21,7 +21,14 @@ public partial class GameDataLoadController : Node
 
         // duplicate game state on load, prevent altering already saved game state
         GameStateData = (GameStateData)gameStateData.Duplicate();
+        LoadCharacters();
 
+        // set screen based on game mode data
+        GetNode<ScreenController>("/root/ScreenController").ChangeScreen(GameStateData.GameMode.Screen);
+    }
+
+    public void LoadCharacters()
+    {
         // load characters
         Node charactersContainer = GetNode("/root/Main/World/Characters");
 
@@ -31,10 +38,7 @@ public partial class GameDataLoadController : Node
             character.Name = characterData.ResourceName;
             charactersContainer.AddChild(character);
 
-            GD.Print($"GameDataLoadController: loadCharacters(): {character.Name}");
+            GD.Print($"GameDataLoadController: LoadCharacters(): {character.Name}");
         }
-
-        // set screen based on game mode data
-        GetNode<ScreenController>("/root/ScreenController").ChangeScreen(GameStateData.GameMode.Screen);
     }
 }
