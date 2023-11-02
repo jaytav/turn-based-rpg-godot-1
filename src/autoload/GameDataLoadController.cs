@@ -9,7 +9,7 @@ public partial class GameDataLoadController : Node
 
     public void Load(GameData gameData, GameStateData gameStateData)
     {
-        GD.Print($"GameDataController: Load(): Loading game [{gameData.ResourceName}], game state [{gameStateData.ResourceName}]");
+        GD.Print($"GameDataLoadController: Load(): Loading game [{gameData.ResourceName}], game state [{gameStateData.ResourceName}]");
         GameData = gameData;
         GameStateData = gameStateData;
 

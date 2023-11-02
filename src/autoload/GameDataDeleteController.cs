@@ -8,11 +8,11 @@ public partial class GameDataDeleteController : Node
 
         if (gameData == null)
         {
-            GD.PushError($"GameDataController: DeleteGame(): Failed to delete, GameData is null");
+            GD.PushError($"GameDataDeleteController: DeleteGame(): Failed to delete, GameData is null");
             return;
         }
 
-        GD.Print($"GameDataController: DeleteGame(): Deleting game [{gameData.ResourceName}]");
+        GD.Print($"GameDataDeleteController: DeleteGame(): Deleting game [{gameData.ResourceName}]");
         string gameDataDir = gameData.ResourcePath.Substring(0, gameData.ResourcePath.Length - 5);
         string gameStateDataDir = $"{gameDataDir}/game_states";
 

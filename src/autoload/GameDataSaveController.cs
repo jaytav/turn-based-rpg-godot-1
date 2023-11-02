@@ -9,11 +9,11 @@ public partial class GameDataSaveController : Node
 
         if (gameData == null)
         {
-            GD.PushError($"GameDataController: SaveGame(): Failed to save, GameData is null");
+            GD.PushError($"GameDataSaveController: SaveGame(): Failed to save, GameData is null");
             return;
         }
 
-        GD.Print($"GameDataController: SaveGame(): Saving game [{gameData.ResourceName}]");
+        GD.Print($"GameDataSaveController: SaveGame(): Saving game [{gameData.ResourceName}]");
         string gameDataDir = gameData.ResourcePath.Substring(0, gameData.ResourcePath.Length - 5);
         string gameStateDataDir = $"{gameDataDir}/game_states";
 
