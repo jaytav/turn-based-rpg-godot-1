@@ -3,7 +3,14 @@ using Godot;
 // Handles camera movement, rotation and zoom
 public partial class CameraController : Node
 {
+    public enum CameraControllerMode {
+        Follow,
+        FollowForced,
+        Manual,
+    }
+
     public Node3D FollowNode;
+    public CameraControllerMode Mode = CameraControllerMode.FollowForced;
 
     private Camera3D _camera;
     private Node3D _cameraContainer;
@@ -56,19 +63,19 @@ public partial class CameraController : Node
             cameraRotation += 1;
         }
 
-        // when attempting to manually move, unset FollowNode
-        if (!cameraTranslation.IsZeroApprox())
+        // when attempting to manually move, switch to Manual mode only when not FollowForced
+        if (!cameraTranslation.IsZeroApprox() && Mode != CameraControllerMode.FollowForced)
         {
-            FollowNode = null;
+            Mode = CameraControllerMode.Manual;
         }
 
-        if (FollowNode == null)
-        {
-            _cameraContainer.Translate(cameraTranslation * _moveSpeed * (float)delta);
-        }
-        else
+        if ((Mode == CameraControllerMode.Follow || Mode == CameraControllerMode.FollowForced) && FollowNode != null)
         {
             _cameraContainer.Position = _cameraContainer.Position.Lerp(FollowNode.Position, _moveSpeed * (float)delta);
+        }
+        else if (Mode == CameraControllerMode.Manual)
+        {
+            _cameraContainer.Translate(cameraTranslation * _moveSpeed * (float)delta);
         }
 
         _cameraContainer.RotateY(cameraRotation * _rotateSpeed * (float)delta);

@@ -49,9 +49,9 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 8)
 projection = 1
 size = 20.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+[node name="WorldBoundaryFloor" type="StaticBody3D" parent="World"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldBoundaryFloor"]
 shape = SubResource("WorldBoundaryShape3D_o165a")
 
 [node name="UI" type="CanvasLayer" parent="."]
