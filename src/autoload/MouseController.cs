@@ -10,14 +10,6 @@ public partial class MouseController : Node
         PositionInWorld = getMousePositionInWorld();
     }
 
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (@event.IsActionPressed("ActionPrimary"))
-        {
-            GD.Print($"MouseController: _UnhandledInput(): PositionInWorld: {PositionInWorld}");
-        }
-    }
-
     private Vector3 getMousePositionInWorld()
     {
         PhysicsDirectSpaceState3D spaceState = GetViewport().World3D.DirectSpaceState;

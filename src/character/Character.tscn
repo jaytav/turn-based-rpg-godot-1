@@ -6,7 +6,13 @@
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_deule")
+_moveSpeed = 8.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_bnibe")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
