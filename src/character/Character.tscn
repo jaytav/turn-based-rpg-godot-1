@@ -1,18 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bomtyqyqpgpm0"]
+[gd_scene load_steps=4 format=3 uid="uid://bomtyqyqpgpm0"]
 
 [ext_resource type="Script" path="res://src/character/Character.cs" id="1_deule"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hc0ev"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_bnibe"]
 
-[node name="Character" type="Node3D"]
+[node name="Character" type="RigidBody3D"]
 script = ExtResource("1_deule")
 _moveSpeed = 8.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_bnibe")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 use_3d_avoidance = true
 debug_enabled = true
+debug_use_custom = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hc0ev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bnibe")

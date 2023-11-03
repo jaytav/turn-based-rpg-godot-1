@@ -35,6 +35,7 @@ public partial class GameDataLoadController : Node
         foreach (CharacterData characterData in GameStateData.Characters)
         {
             Character character = _character.Instantiate<Character>();
+            character.Position = characterData.Position;
             character.Name = characterData.ResourceName;
             charactersContainer.AddChild(character);
 

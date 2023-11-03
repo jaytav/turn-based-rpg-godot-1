@@ -1,7 +1,6 @@
 using Godot;
-using Godot.Collections;
 
-public partial class Character : Node3D
+public partial class Character : RigidBody3D
 {
     [Export]
     private float _moveSpeed;
@@ -45,6 +44,11 @@ public partial class Character : Node3D
 
     private void onNavigationAgentVelocityComputed(Vector3 safeVelocity)
     {
+        if (safeVelocity.IsZeroApprox())
+        {
+            return;
+        }
+
         Position = Position.MoveToward(Position + safeVelocity, _movementDelta);
     }
 

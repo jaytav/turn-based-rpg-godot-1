@@ -15,7 +15,7 @@ public partial class CameraController : Node
     private Camera3D _camera;
     private Node3D _cameraContainer;
 
-    private float _moveSpeed = 10;
+    private float _moveSpeed = 5;
     private float _rotateSpeed = 5;
     private float _zoomMax = 20;
     private float _zoomMin = 5;

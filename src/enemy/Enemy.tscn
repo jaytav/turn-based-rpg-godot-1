@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://iggodo7q7g7b"]
+
+[ext_resource type="PackedScene" uid="uid://bomtyqyqpgpm0" path="res://src/character/Character.tscn" id="1_p4llv"]
+[ext_resource type="Script" path="res://src/enemy/Enemy.cs" id="2_284u2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toien"]
+albedo_color = Color(0.784314, 0.364706, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eyhi2"]
+material = SubResource("StandardMaterial3D_toien")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8k4t"]
+radius = 2.0
+
+[node name="Enemy" instance=ExtResource("1_p4llv")]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_284u2")
+_moveSpeed = 0.0
+
+[node name="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("BoxMesh_eyhi2")
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_c8k4t")
+
+[connection signal="body_entered" from="Area3D" to="." method="onArea3DBodyEntered"]

@@ -30,6 +30,13 @@ public partial class CharacterOpenWorldController : Node
 
     private void onCharactersContainerChildEnteredTree(Node node)
     {
-        _activeCharacters.Add((Character)node);
+        Character character = (Character)node;
+
+        if (_activeCharacters.Count == 0)
+        {
+            GetNode<CameraController>("/root/CameraController").FollowNode = character;
+        }
+
+        _activeCharacters.Add(character);
     }
 }
