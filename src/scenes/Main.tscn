@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=16 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
 [ext_resource type="PackedScene" uid="uid://bnxq20eeqdm45" path="res://src/scenes/ui/screens/character_create/CharacterCreateScreen.tscn" id="5_e7yey"]
 [ext_resource type="PackedScene" uid="uid://nquvw4n71oka" path="res://src/scenes/ui/screens/open_world/OpenWorldScreen.tscn" id="6_fvtds"]
-[ext_resource type="PackedScene" uid="uid://iggodo7q7g7b" path="res://src/enemy/Enemy.tscn" id="7_ajloa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s65j3"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,8 +51,7 @@ script = ExtResource("1_gejv4")
 
 [node name="Characters" type="Node" parent="World"]
 
-[node name="Enemy" parent="World/Characters" instance=ExtResource("7_ajloa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81005, 4.76837e-07, 8.5787)
+[node name="Enemies" type="Node" parent="World"]
 
 [node name="Environment" type="Node" parent="World"]
 

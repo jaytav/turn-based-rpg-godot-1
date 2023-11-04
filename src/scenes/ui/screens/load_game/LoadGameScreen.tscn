@@ -8,8 +8,8 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_7eaxl"]
 font_size = 24
 
-[sub_resource type="LabelSettings" id="LabelSettings_h3qi0"]
-font_size = 14
+[sub_resource type="LabelSettings" id="LabelSettings_nifbu"]
+font_size = 20
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7wyeg"]
 
@@ -28,8 +28,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -292.0
-offset_bottom = -228.0
+offset_top = -324.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Load Game"
@@ -43,10 +43,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 896.0
-offset_top = 156.0
-offset_right = -64.0
-offset_bottom = 220.0
+offset_left = 840.0
+offset_top = 252.0
+offset_right = -8.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -59,10 +59,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 32.0
+offset_left = 8.0
 offset_top = -196.0
 offset_right = -320.0
-offset_bottom = 252.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -87,10 +87,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 864.0
+offset_left = 840.0
 offset_top = -196.0
-offset_right = -32.0
-offset_bottom = 140.0
+offset_right = -8.0
+offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -120,6 +120,7 @@ anchor_top = 0.190476
 anchor_right = 1.0
 anchor_bottom = 0.309524
 text = "Game State Title"
+label_settings = SubResource("LabelSettings_nifbu")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -131,7 +132,6 @@ anchor_top = 0.857143
 anchor_right = 1.0
 anchor_bottom = 0.952381
 text = "0000-00-00 00:00:00"
-label_settings = SubResource("LabelSettings_h3qi0")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -139,10 +139,10 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1875
-anchor_top = 0.357143
-anchor_right = 0.8125
-anchor_bottom = 0.809524
+anchor_left = 0.184211
+anchor_top = 0.380952
+anchor_right = 0.809211
+anchor_bottom = 0.761905
 texture = SubResource("CanvasTexture_7wyeg")
 metadata/_edit_use_anchors_ = true
 

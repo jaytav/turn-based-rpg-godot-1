@@ -7,5 +7,8 @@ public partial class GameStateData : Resource
     public Array<CharacterData> Characters = new();
 
     [Export]
+    public Array<CharacterData> Enemies = new();
+
+    [Export]
     public GameModeData GameMode = new();
 }
