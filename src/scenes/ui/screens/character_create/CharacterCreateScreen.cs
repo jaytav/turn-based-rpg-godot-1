@@ -26,9 +26,7 @@ public partial class CharacterCreateScreen : Screen
 
         GameDataLoadController gameDataLoadController = GetNode<GameDataLoadController>("/root/GameDataLoadController");
         gameDataLoadController.GameStateData.Characters.Add(characterData);
-        gameDataLoadController.GameStateData.GameMode = GD.Load<GameModeData>("res://src/data/game_modes/open_world.tres");
         GetNode<GameDataSaveController>("/root/GameDataSaveController").Save();
-
-        ScreenController.ChangeScreen(gameDataLoadController.GameStateData.GameMode.Screen);
+        Hide();
     }
 }
