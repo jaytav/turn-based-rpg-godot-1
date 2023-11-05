@@ -33,8 +33,6 @@ public partial class GameDataSaveController : Node
         gameStateData.ResourcePath = $"{gameStateDataDir}/{gameStateData.ResourceName}.tres";
         gameData.GameStates.Insert(0, gameStateData);
 
-        saveCharacters(gameStateData);
-        saveEnemies(gameStateData);
         ResourceSaver.Save(gameStateData);
         ResourceSaver.Save(gameData);
 
@@ -46,27 +44,5 @@ public partial class GameDataSaveController : Node
 
         gameDataLoadController.GameData = gameData;
         gameDataLoadController.GameStateData = (GameStateData)gameStateData.Duplicate();
-    }
-
-    private void saveCharacters(GameStateData gameStateData)
-    {
-        gameStateData.Characters.Clear();
-        Node charactersContainer = GetNode("/root/Main/World/Characters");
-
-        foreach (Character character in charactersContainer.GetChildren())
-        {
-            gameStateData.Characters.Add(CharacterData.FromCharacter(character));
-        }
-    }
-
-    private void saveEnemies(GameStateData gameStateData)
-    {
-        gameStateData.Enemies.Clear();
-        Node enemiesContainer = GetNode("/root/Main/World/Enemies");
-
-        foreach (Character enemy in enemiesContainer.GetChildren())
-        {
-            gameStateData.Enemies.Add(CharacterData.FromCharacter(enemy));
-        }
     }
 }

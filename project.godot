@@ -21,9 +21,6 @@ ConfigController="*res://src/autoload/ConfigController.cs"
 GameDataDeleteController="*res://src/autoload/GameDataDeleteController.cs"
 GameDataLoadController="*res://src/autoload/GameDataLoadController.cs"
 GameDataSaveController="*res://src/autoload/GameDataSaveController.cs"
-CameraController="*res://src/autoload/CameraController.cs"
-MouseController="*res://src/autoload/MouseController.cs"
-CharacterOpenWorldController="*res://src/autoload/CharacterOpenWorldController.cs"
 
 [display]
 

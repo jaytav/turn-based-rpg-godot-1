@@ -1,94 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=6 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
 [ext_resource type="PackedScene" uid="uid://rtev2lys4wnb" path="res://src/scenes/ui/screens/new_game/NewGameScreen.tscn" id="2_2wkdg"]
 [ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
 [ext_resource type="PackedScene" uid="uid://bnxq20eeqdm45" path="res://src/scenes/ui/screens/character_create/CharacterCreateScreen.tscn" id="5_e7yey"]
-[ext_resource type="PackedScene" uid="uid://nquvw4n71oka" path="res://src/scenes/ui/screens/open_world/OpenWorldScreen.tscn" id="6_fvtds"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s65j3"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_caqwx"]
-sky_material = SubResource("ProceduralSkyMaterial_s65j3")
-
-[sub_resource type="Environment" id="Environment_7fa1k"]
-background_mode = 1
-background_color = Color(0.545098, 0.741176, 1, 1)
-sky = SubResource("Sky_caqwx")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_e8vpp"]
-vertices = PackedVector3Array(10, 0.5, 9.5, 10, 0.5, 4.75, 9, 0.5, 4.5, 0.25, 0.5, 9.5, 9, 0.5, -4.25, 10.25, 0.5, -4.5, 10.25, 0.5, -9.5, 0.25, 0.5, -9.5, 0.25, 0.5, -9.5, -9.5, 0.5, -9.5, -9.5, 0.5, 0, 0.25, 0.5, 9.5, 9, 0.5, 4.5, 9, 0.5, -4.25, -9.5, 0.5, 0, -9.5, 0.5, 9.5, 0.25, 0.5, 9.5, 10.25, 0.5, -9.5, 10.25, 0.5, -4.5, 11.25, 0.5, -4.25, 19.75, 0.5, -9.5, 11.25, 0.5, 4.25, 10, 0.5, 4.75, 10, 0.5, 9.5, 19.75, 0.5, 9.5, 29.5, 0.5, 0, 29.5, 0.5, -9.5, 19.75, 0.5, -9.5, 19.75, 0.5, 9.5, 29.5, 0.5, 9.5, 29.5, 0.5, 0, 19.75, 0.5, -9.5, 11.25, 0.5, -4.25, 11.25, 0.5, 4.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 13), PackedInt32Array(10, 13, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(27, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 33), PackedInt32Array(30, 33, 32), PackedInt32Array(30, 32, 31)]
-agent_height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ti1"]
-albedo_color = Color(0.407843, 0.592157, 0.329412, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3qd3w"]
-material = SubResource("StandardMaterial3D_t5ti1")
-size = Vector3(20, 1, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pdlw"]
-albedo_color = Color(0.235294, 0.517647, 0.364706, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ft3ru"]
-material = SubResource("StandardMaterial3D_6pdlw")
-size = Vector3(1, 2, 8)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_o165a"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_gejv4")
-
-[node name="World" type="Node3D" parent="."]
-
-[node name="Characters" type="Node" parent="World"]
-
-[node name="Enemies" type="Node" parent="World"]
-
-[node name="Environment" type="Node" parent="World"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Environment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World/Environment"]
-environment = SubResource("Environment_7fa1k")
-
-[node name="CameraContainer" type="Node3D" parent="World"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
-
-[node name="Camera" type="Camera3D" parent="World/CameraContainer"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 12, 20)
-projection = 1
-size = 20.0
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
-navigation_mesh = SubResource("NavigationMesh_e8vpp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_3qd3w")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.5, 0)
-mesh = SubResource("BoxMesh_3qd3w")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
-mesh = SubResource("BoxMesh_ft3ru")
-
-[node name="WorldBoundaryFloor" type="StaticBody3D" parent="World"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldBoundaryFloor"]
-shape = SubResource("WorldBoundaryShape3D_o165a")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -104,5 +23,9 @@ visible = false
 [node name="CharacterCreateScreen" parent="UI" instance=ExtResource("5_e7yey")]
 visible = false
 
-[node name="OpenWorldScreen" parent="UI" instance=ExtResource("6_fvtds")]
+[node name="OpenWorldScreen" type="Control" parent="UI"]
 visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -19,12 +19,6 @@ public partial class ScreenController : Node
         if (@event.IsActionPressed("Exit"))
         {
             ChangeScreen("MainMenuScreen");
-
-            // remove characters before going to main menu
-            foreach (Character character in GetNode("/root/Main/World/Characters").GetChildren())
-            {
-                character.QueueFree();
-            }
         }
     }
 
