@@ -41,13 +41,8 @@ public partial class LoadGameItem : VBoxContainer
     {
         bool isButton = GetNode<Button>("Button") == button;
 
-        // disable displaying load game state items in game data simple mode
-        if (!(bool)ProjectSettings.GetSetting("global/game_data_simple"))
-        {
-            // toggle game state item visibility
-            _loadGameStateItems.Visible = GetNode<Button>("Button") == button;
-            return;
-        }
+        // toggle game state item visibility, disable visibility in game data simple mode
+        _loadGameStateItems.Visible = isButton && !(bool)ProjectSettings.GetSetting("global/game_data_simple");
 
         // press first load game state item
         if (isButton)
