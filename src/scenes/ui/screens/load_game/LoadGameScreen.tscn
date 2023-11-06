@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.cs" id="1_1n44b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hgtyn"]
-font_size = 32
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_7eaxl"]
 font_size = 24
@@ -93,6 +93,7 @@ offset_right = -8.0
 offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="Container" type="Control" parent="LoadGameStateDetails"]
 layout_mode = 1
@@ -139,10 +140,10 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="LoadGameStateDetails/Container"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.184211
-anchor_top = 0.380952
-anchor_right = 0.809211
-anchor_bottom = 0.761905
+anchor_left = 0.236842
+anchor_top = 0.381818
+anchor_right = 0.763158
+anchor_bottom = 0.763636
 texture = SubResource("CanvasTexture_7wyeg")
 metadata/_edit_use_anchors_ = true
 

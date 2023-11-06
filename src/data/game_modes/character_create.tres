@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bu6gcrir17jvy"]
-
-[ext_resource type="Script" path="res://src/data/GameModeData.cs" id="1_gm1f5"]
-
-[resource]
-resource_name = "Create Character"
-script = ExtResource("1_gm1f5")
-Screen = "CharacterCreateScreen"

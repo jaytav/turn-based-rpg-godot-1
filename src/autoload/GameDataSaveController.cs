@@ -24,12 +24,9 @@ public partial class GameDataSaveController : Node
         {
             // game state data directory
             DirAccess.MakeDirRecursiveAbsolute(gameStateDataDir);
-
-            // game state data game mode
-            gameStateData.GameMode = GD.Load<GameModeData>("res://src/data/game_modes/character_create.tres");
         }
 
-        gameStateData.ResourceName = $"game_state_{DirAccess.GetFilesAt(gameStateDataDir).Length.ToString()}";
+        gameStateData.ResourceName = DirAccess.GetFilesAt(gameStateDataDir).Length.ToString();
         gameStateData.ResourcePath = $"{gameStateDataDir}/{gameStateData.ResourceName}.tres";
         gameData.GameStates.Insert(0, gameStateData);
 

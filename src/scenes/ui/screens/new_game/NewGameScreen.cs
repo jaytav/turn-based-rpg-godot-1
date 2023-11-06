@@ -21,7 +21,5 @@ public partial class NewGameScreen : Screen
         gameData.ResourceName = GetNode<LineEdit>("NameLineEdit").Text;
         gameData.ResourcePath = $"res://data/games/{gameData.GetInstanceId()}.tres";
         GetNode<GameDataSaveController>("/root/GameDataSaveController").Save(gameData);
-
-        ScreenController.ChangeScreen(gameData.GameStates[0].GameMode.Screen);
     }
 }
