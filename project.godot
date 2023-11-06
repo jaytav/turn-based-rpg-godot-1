@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="TurnBasedRPGGodot"
 
+[global]
+
+game_data_simple=true
+
 [input]
 
 Exit={
