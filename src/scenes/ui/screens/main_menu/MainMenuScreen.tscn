@@ -46,7 +46,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_s8nga"]
-font_size = 32
+font_size = 48
 
 [node name="MainMenuScreen" type="Control"]
 layout_mode = 3
@@ -68,8 +68,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -155.0
-offset_bottom = -91.0
+offset_top = -324.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"

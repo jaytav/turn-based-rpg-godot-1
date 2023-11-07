@@ -53,7 +53,7 @@ public partial class LoadGameScreen : Screen
         // display load game state details
         Control loadGameStateDetailsContainer = GetNode<Control>("LoadGameStateDetails/Container");
         loadGameStateDetailsContainer.GetNode<Label>("Title").Text = gameData.ResourceName;
-        loadGameStateDetailsContainer.GetNode<Label>("Subtitle").Text = gameStateData.GameMode.ResourceName;
+        loadGameStateDetailsContainer.GetNode<Label>("Subtitle").Text = gameStateData.ResourceName;
         loadGameStateDetailsContainer.GetNode<Label>("ModifiedTime").Text = Time.GetDatetimeStringFromUnixTime((long)FileAccess.GetModifiedTime(gameStateData.ResourcePath)).Replace('T', ' ');
         loadGameStateDetailsContainer.Visible = true;
     }

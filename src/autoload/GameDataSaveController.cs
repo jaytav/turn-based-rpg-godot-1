@@ -34,10 +34,7 @@ public partial class GameDataSaveController : Node
         ResourceSaver.Save(gameData);
 
         // set config game data and game state data
-        ConfigData configData = GetNode<ConfigController>("/root/ConfigController").ConfigData;
-        configData.GameStateData = gameStateData;
-        configData.GameData = gameData;
-        ResourceSaver.Save(configData);
+        GetNode<ConfigController>("/root/ConfigController").StoreGameData(gameData, gameStateData);
 
         gameDataLoadController.GameData = gameData;
         gameDataLoadController.GameStateData = (GameStateData)gameStateData.Duplicate();

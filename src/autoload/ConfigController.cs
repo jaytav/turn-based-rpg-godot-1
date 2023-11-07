@@ -20,4 +20,11 @@ public partial class ConfigController : Node
 
         ConfigData = GD.Load<ConfigData>(_configFilePath);
     }
+
+    public void StoreGameData(GameData gameData, GameStateData gameStateData)
+    {
+        ConfigData.GameStateData = gameStateData;
+        ConfigData.GameData = gameData;
+        ResourceSaver.Save(ConfigData);
+    }
 }
