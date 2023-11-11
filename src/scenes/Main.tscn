@@ -39,11 +39,11 @@ glow_enabled = true
 script = ExtResource("1_gejv4")
 
 [node name="World" type="Node3D" parent="."]
-visible = false
 
 [node name="GridMap" type="GridMap" parent="World"]
 mesh_library = ExtResource("2_qsv5o")
 cell_size = Vector3(8, 2, 8)
+cell_center_y = false
 data = {
 "cells": PackedInt32Array(2, 0, 0, 2, 1, 0, 2, 2, 0, 1, 2, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0)
 }
@@ -61,11 +61,11 @@ size = 100.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 12)
 
 [node name="Player" type="MeshInstance3D" parent="World/Characters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.5, 0)
 mesh = SubResource("BoxMesh_jnf8o")
 
 [node name="Enemy" type="MeshInstance3D" parent="World/Characters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 0)
 mesh = SubResource("BoxMesh_6p1bp")
 
 [node name="Environment" type="Node3D" parent="World"]

@@ -6,7 +6,7 @@ public partial class LoadGameStateItem : Button
 
     public override void _Ready()
     {
-        string title = GameStateData.GameMode.ResourceName;
+        string title = GameStateData.ResourceName;
 
         if (GameStateData.Characters.Count > 0)
         {
