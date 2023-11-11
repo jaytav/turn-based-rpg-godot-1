@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://uxjhknwffnoj"]
+[gd_scene load_steps=3 format=3 uid="uid://uxjhknwffnoj"]
+
+[ext_resource type="Script" path="res://src/character/Character.cs" id="1_vyna6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b52pq"]
 size = Vector3(5, 5, 5)
 
 [node name="Character" type="Node3D"]
+script = ExtResource("1_vyna6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
