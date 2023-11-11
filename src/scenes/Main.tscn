@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
 [ext_resource type="PackedScene" uid="uid://rtev2lys4wnb" path="res://src/scenes/ui/screens/new_game/NewGameScreen.tscn" id="2_2wkdg"]
+[ext_resource type="MeshLibrary" uid="uid://0lfga2sfmpsk" path="res://src/scenes/world/grid_map/grid_map_mesh_library.tres" id="2_qsv5o"]
 [ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
 [ext_resource type="PackedScene" uid="uid://5rridrf6i5oq" path="res://src/scenes/ui/screens/world/WorldScreen.tscn" id="5_elbe4"]
 
@@ -34,26 +35,40 @@ sky = SubResource("Sky_6ymvt")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_uvlu4"]
-size = Vector3(10, 1, 10)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_gejv4")
 
 [node name="World" type="Node3D" parent="."]
 visible = false
 
+[node name="GridMap" type="GridMap" parent="World"]
+mesh_library = ExtResource("2_qsv5o")
+cell_size = Vector3(8, 2, 8)
+data = {
+"cells": PackedInt32Array(2, 0, 0, 2, 1, 0, 2, 2, 0, 1, 2, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0)
+}
+
+[node name="CameraContainer" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="Camera" type="Camera3D" parent="World/CameraContainer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+projection = 1
+current = true
+size = 100.0
+
 [node name="Characters" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 12)
 
 [node name="Player" type="MeshInstance3D" parent="World/Characters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 0)
 mesh = SubResource("BoxMesh_jnf8o")
 
 [node name="Enemy" type="MeshInstance3D" parent="World/Characters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 0)
 mesh = SubResource("BoxMesh_6p1bp")
 
-[node name="Environment" type="Node" parent="World"]
+[node name="Environment" type="Node3D" parent="World"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World/Environment"]
 environment = SubResource("Environment_li0by")
@@ -62,60 +77,6 @@ environment = SubResource("Environment_li0by")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 light_energy = 0.5
 shadow_enabled = true
-
-[node name="PhysicalEnvironment" type="Node3D" parent="World"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/PhysicalEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 11)
-mesh = SubResource("BoxMesh_uvlu4")
-skeleton = NodePath("../..")
-
-[node name="CameraContainer" type="Node3D" parent="World"]
-
-[node name="Camera" type="Camera3D" parent="World/CameraContainer"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
-projection = 1
-current = true
-size = 35.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
