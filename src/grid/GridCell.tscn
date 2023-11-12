@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxdhtltba043f"]
+
+[ext_resource type="Script" path="res://src/grid/GridCell.cs" id="1_uerrx"]
+
+[node name="GridCell" type="Node3D"]
+script = ExtResource("1_uerrx")
