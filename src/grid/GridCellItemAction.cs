@@ -10,6 +10,7 @@ public abstract partial class GridCellItemAction : GodotObject
 public partial class GridCellItemActionContext
 {
     public GridCellItem GridCellItem;
+    public GridCellItem GridCellItemTarget;
     public GridCell GridCellFrom;
     public GridCell GridCellTo;
 }

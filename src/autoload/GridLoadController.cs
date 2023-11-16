@@ -10,12 +10,14 @@ public partial class GridLoadController : Node
         Grid grid = _grid.Instantiate<Grid>();
 
         // load player into grid
-        GridCellItem player =_character.Instantiate<GridCellItem>();
+        GridCellItem player = _character.Instantiate<GridCellItem>();
         GetNode<PlayerController>("/root/PlayerController").Player = player;
         grid.GetChild(gameStateData.PlayerPosition).AddChild(player);
 
         // load enemy into grid
-        grid.GetChild(gameStateData.EnemyPosition).AddChild(_character.Instantiate());
+        GridCellItem enemy = _character.Instantiate<GridCellItem>();
+        GetNode<EnemyController>("/root/EnemyController").Enemy = enemy;
+        grid.GetChild(gameStateData.EnemyPosition).AddChild(enemy);
 
         GetNode("/root/Main/World").AddChild(grid);
     }

@@ -14,19 +14,34 @@ public partial class PlayerController : Node
         if (@event.IsActionPressed("ActionPrimary"))
         {
             GD.Print($"PlayerController: _UnhandledInput(): ActionPrimary");
-            GridCellItemAction move = new Move();
-            move.Context = getGridCellItemActionContext();
-            move.Do();
+            getAction().Do();
         }
     }
 
-    private GridCellItemActionContext getGridCellItemActionContext()
+    /** choose action based on context
+        attack if attackable grid cell item
+        move if no attackable grid cell item */
+    private GridCellItemAction getAction()
     {
         GridCellItemActionContext context = new();
-        context.GridCellItem = Player;
-        context.GridCellFrom = Player.GetParent<GridCell>();
         context.GridCellTo = GetNode<MouseController>("/root/MouseController").GetGridCell();
+        context.GridCellFrom = Player.GetParent<GridCell>();
+        context.GridCellItem = Player;
 
-        return context;
+        foreach (GridCellItem item in context.GridCellTo.GetChildren())
+        {
+            if (item.Attackable)
+            {
+                Attack attack = new();
+                context.GridCellItemTarget = item;
+                attack.Context = context;
+                return attack;
+            }
+        }
+
+        // move as default action
+        Move move = new();
+        move.Context = context;
+        return move;
     }
 }

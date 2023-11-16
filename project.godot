@@ -24,6 +24,7 @@ GameDataSaveController="*res://src/autoload/GameDataSaveController.cs"
 MouseController="*res://src/autoload/MouseController.cs"
 GridLoadController="*res://src/autoload/GridLoadController.cs"
 PlayerController="*res://src/autoload/PlayerController.cs"
+EnemyController="*res://src/autoload/EnemyController.cs"
 
 [display]
 

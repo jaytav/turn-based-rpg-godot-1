@@ -6,7 +6,7 @@
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_tr6kt")
-Solid = true
+Attackable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
