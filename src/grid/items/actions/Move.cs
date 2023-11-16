@@ -2,10 +2,15 @@ using Godot;
 
 public partial class Move : GridCellItemAction
 {
-    public override void Do(GridCellItemActionContext context)
+    public override void Do()
     {
+        if (Context.GridCellTo.HasSolidItem())
+        {
+            return;
+        }
+
         // reparent grid cell item's grid cell to move
-        context.GridCellFrom.RemoveChild(context.GridCellItem);
-        context.GridCellTo.AddChild(context.GridCellItem);
+        Context.GridCellFrom.RemoveChild(Context.GridCellItem);
+        Context.GridCellTo.AddChild(Context.GridCellItem);
     }
 }

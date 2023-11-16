@@ -19,6 +19,7 @@ public partial class GameDataLoadController : Node
         GameStateData = (GameStateData)GameStateData.Duplicate();
 
         GetNode<Node3D>("/root/Main/World").Visible = true;
-        GetNode<ScreenController>("/root/ScreenController").ChangeScreen("WorldScreen");
+        GetNode<GridLoadController>("/root/GridLoadController").Load(GameStateData);
+        GetNode<ScreenController>("/root/ScreenController").ChangeScreen("GridScreen");
     }
 }

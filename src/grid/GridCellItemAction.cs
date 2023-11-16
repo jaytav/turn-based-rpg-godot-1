@@ -2,7 +2,9 @@ using Godot;
 
 public abstract partial class GridCellItemAction : GodotObject
 {
-    public abstract void Do(GridCellItemActionContext context);
+    public GridCellItemActionContext Context;
+
+    public abstract void Do();
 }
 
 public partial class GridCellItemActionContext

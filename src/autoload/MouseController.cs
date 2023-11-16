@@ -20,6 +20,19 @@ public partial class MouseController : Node
         return (Vector3)_intersectRay["position"];
     }
 
+    public GridCell GetGridCell()
+    {
+        if (!_intersectRay.ContainsKey("collider"))
+        {
+            return null;
+        }
+
+        Node gridCellItemBody = (Node)_intersectRay["collider"];
+        Node gridCellItem = gridCellItemBody.GetParent().GetParent();
+
+        return gridCellItem.GetParent<GridCell>();
+    }
+
     private void setIntersectRay()
     {
         PhysicsDirectSpaceState3D spaceState = GetViewport().World3D.DirectSpaceState;

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw14xiqmj50wa"]
+[gd_scene load_steps=4 format=3 uid="uid://cw14xiqmj50wa"]
 
 [ext_resource type="Script" path="res://src/grid/Grid.cs" id="1_647tg"]
 [ext_resource type="PackedScene" uid="uid://bxdhtltba043f" path="res://src/grid/GridCell.tscn" id="1_hlmvy"]
 [ext_resource type="PackedScene" uid="uid://henfahf37jkw" path="res://src/grid/items/Floor.tscn" id="2_yhsdg"]
-[ext_resource type="PackedScene" uid="uid://c0bg6w2ydsv4t" path="res://src/grid/items/Character.tscn" id="3_bccv2"]
 
 [node name="Grid" type="Node3D"]
 script = ExtResource("1_647tg")
@@ -28,8 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="Floor" parent="GridCell4" instance=ExtResource("2_yhsdg")]
 
-[node name="Character" parent="GridCell4" instance=ExtResource("3_bccv2")]
-
 [node name="GridCell5" parent="." instance=ExtResource("1_hlmvy")]
 
 [node name="Floor" parent="GridCell5" instance=ExtResource("2_yhsdg")]
@@ -38,8 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Floor" parent="GridCell6" instance=ExtResource("2_yhsdg")]
-
-[node name="Character" parent="GridCell6" instance=ExtResource("3_bccv2")]
 
 [node name="GridCell7" parent="." instance=ExtResource("1_hlmvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
