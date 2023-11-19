@@ -42,6 +42,11 @@ public partial class LoadGameScreen : Screen
         }
     }
 
+    public override void Exit()
+    {
+        ScreenController.ChangeScreen("MainMenuScreen");
+    }
+
     private void onLoadGameItemPressed(GameData gameData, GameStateData gameStateData)
     {
         _selectedGameData = gameData;

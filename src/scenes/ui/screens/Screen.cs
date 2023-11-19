@@ -10,4 +10,6 @@ public abstract partial class Screen : Control
     }
 
     public virtual void Enter() { }
+
+    public virtual void Exit() { }
 }

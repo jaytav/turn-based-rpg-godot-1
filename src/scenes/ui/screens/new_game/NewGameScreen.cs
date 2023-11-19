@@ -22,4 +22,9 @@ public partial class NewGameScreen : Screen
         gameData.ResourcePath = $"res://data/games/{gameData.GetInstanceId()}.tres";
         GetNode<GameDataSaveController>("/root/GameDataSaveController").Save(gameData);
     }
+
+    public override void Exit()
+    {
+        ScreenController.ChangeScreen("MainMenuScreen");
+    }
 }
