@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://5rridrf6i5oq"]
 
-[ext_resource type="Script" path="res://src/scenes/ui/screens/grid/GridScreen.cs" id="1_4i6w3"]
+[ext_resource type="Script" path="res://src/scenes/ui/screens/battle/BattleScreen.cs" id="1_4nd8q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_givit"]
 font_size = 48
 
-[node name="GridScreen" type="Control"]
+[node name="BattleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_4i6w3")
+script = ExtResource("1_4nd8q")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -25,7 +25,7 @@ offset_top = -324.0
 offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Grid Screen"
+text = "Battle Screen"
 label_settings = SubResource("LabelSettings_givit")
 horizontal_alignment = 1
 vertical_alignment = 1
