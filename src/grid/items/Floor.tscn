@@ -1,77 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://henfahf37jkw"]
+[gd_scene load_steps=4 format=3 uid="uid://henfahf37jkw"]
 
 [ext_resource type="PackedScene" uid="uid://dfphxtcg2lp26" path="res://src/grid/GridCellItem.tscn" id="1_2fgp6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqm8h"]
+albedo_color = Color(0.717647, 0.94902, 0.721569, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_om323"]
 material = SubResource("StandardMaterial3D_lqm8h")
 size = Vector3(2, 1, 2)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y5oj6"]
-data = PackedVector3Array(-1, 0.5, 1, 1, 0.5, 1, -1, -0.5, 1, 1, 0.5, 1, 1, -0.5, 1, -1, -0.5, 1, 1, 0.5, -1, -1, 0.5, -1, 1, -0.5, -1, -1, 0.5, -1, -1, -0.5, -1, 1, -0.5, -1, 1, 0.5, 1, 1, 0.5, -1, 1, -0.5, 1, 1, 0.5, -1, 1, -0.5, -1, 1, -0.5, 1, -1, 0.5, -1, -1, 0.5, 1, -1, -0.5, -1, -1, 0.5, 1, -1, -0.5, 1, -1, -0.5, -1, 1, 0.5, 1, -1, 0.5, 1, 1, 0.5, -1, -1, 0.5, 1, -1, 0.5, -1, 1, 0.5, -1, -1, -0.5, 1, 1, -0.5, 1, -1, -0.5, -1, 1, -0.5, 1, 1, -0.5, -1, -1, -0.5, -1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_5iouo"]
-inner_radius = 0.75
-outer_radius = 0.5
-
-[sub_resource type="Animation" id="Animation_j671p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ucqph"]
-resource_name = "breathe"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1.25, 1.25, 1.25)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i02bq"]
-_data = {
-"RESET": SubResource("Animation_j671p"),
-"breathe": SubResource("Animation_ucqph")
-}
 
 [node name="Floor" instance=ExtResource("1_2fgp6")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_om323")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_y5oj6")
-
-[node name="Highlight" type="MeshInstance3D" parent="." index="1"]
-visible = false
-mesh = SubResource("TorusMesh_5iouo")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Highlight" index="0"]
-autoplay = "breathe"
-libraries = {
-"": SubResource("AnimationLibrary_i02bq")
-}
-
-[connection signal="mouse_entered" from="MeshInstance3D/StaticBody3D" to="." method="onStaticBody3DMouseEntered"]
-[connection signal="mouse_exited" from="MeshInstance3D/StaticBody3D" to="." method="onStaticBody3DMouseExited"]

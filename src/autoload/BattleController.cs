@@ -12,12 +12,22 @@ public partial class BattleController : Node
         // load player
         GridCellItem player = _character.Instantiate<GridCellItem>();
         GetNode<PlayerController>("/root/PlayerController").Player = player;
-        grid.GetChild(gameStateData.PlayerPosition).AddChild(player);
+        player.Name = "Player";
+        grid.GetChild(gameStateData.PlayerPosition).GetNode("Items").AddChild(player);
 
         // load enemy
         GridCellItem enemy = _character.Instantiate<GridCellItem>();
-        grid.GetChild(gameStateData.EnemyPosition).AddChild(enemy);
+        enemy.Name = "Enemy";
+        grid.GetChild(gameStateData.EnemyPosition).GetNode("Items").AddChild(enemy);
         enemy.TreeExited += onEnemyTreeExited;
+
+        // if grid exists, remove
+        Node existingGrid = GetNodeOrNull("/root/Main/World/Grid");
+
+        if (existingGrid != null)
+        {
+            existingGrid.QueueFree();
+        }
 
         GetNode("/root/Main/World").AddChild(grid);
         GetNode<ScreenController>("/root/ScreenController").ChangeScreen("BattleScreen");
@@ -25,8 +35,14 @@ public partial class BattleController : Node
 
     private void onEnemyTreeExited()
     {
-        GetNode("/root/Main/World/Grid").QueueFree();
-        GetNode<ScreenController>("/root/ScreenController").ChangeScreen("MainMenuScreen");
-        GD.Print("You Win!");
+        Node grid = GetNodeOrNull("/root/Main/World/Grid");
+
+        // handle when enemy exits tree when game loaded while in game
+        if (grid != null)
+        {
+            GetNode("/root/Main/World/Grid").QueueFree();
+            GetNode<ScreenController>("/root/ScreenController").ChangeScreen("MainMenuScreen");
+            GD.Print("You Win!");
+        }
     }
 }

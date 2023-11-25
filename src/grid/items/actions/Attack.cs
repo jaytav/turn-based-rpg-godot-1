@@ -4,7 +4,7 @@ public partial class Attack : GridCellItemAction
 {
     public override void Do()
     {
-        GD.Print($"Attack: Do(): Attacking: {Context.GridCellItemTarget.Name}");
+        GD.Print($"Attack: Do(): Attacking: [{Context.GridCellItem.Name}] -> [{Context.GridCellItemTarget.Name}]");
 
         // placeholder, handle health points here
         Context.GridCellItemTarget.QueueFree();

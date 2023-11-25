@@ -27,10 +27,8 @@ public partial class MouseController : Node
             return null;
         }
 
-        Node gridCellItemBody = (Node)_intersectRay["collider"];
-        Node gridCellItem = gridCellItemBody.GetParent().GetParent();
-
-        return gridCellItem.GetParent<GridCell>();
+        Node gridCellBody = (Node)_intersectRay["collider"];
+        return gridCellBody.GetParent<GridCell>();
     }
 
     private void setIntersectRay()

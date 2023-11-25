@@ -20,6 +20,11 @@ public partial class MainMenuScreen : Screen
         GetNode<Label>("ContinueButtonDetail").Visible = false;
     }
 
+    public override void Exit()
+    {
+        GetTree().Quit();
+    }
+
     private void onNewGameButtonPressed()
     {
         ScreenController.ChangeScreen("NewGameScreen");

@@ -44,7 +44,7 @@ public partial class LoadGameScreen : Screen
 
     public override void Exit()
     {
-        ScreenController.ChangeScreen("MainMenuScreen");
+        ScreenController.Back();
     }
 
     private void onLoadGameItemPressed(GameData gameData, GameStateData gameStateData)
