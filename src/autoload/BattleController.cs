@@ -5,21 +5,24 @@ public partial class BattleController : Node
     private PackedScene _grid = GD.Load<PackedScene>("res://src/grid/Grid.tscn");
     private PackedScene _character = GD.Load<PackedScene>("res://src/grid/items/Character.tscn");
 
+    public GridCellItem Player;
+    public GridCellItem Enemy;
+
     public void Load(GameStateData gameStateData)
     {
         Grid grid = _grid.Instantiate<Grid>();
 
         // load player
-        GridCellItem player = _character.Instantiate<GridCellItem>();
-        GetNode<PlayerController>("/root/PlayerController").Player = player;
-        player.Name = "Player";
-        grid.GetChild(gameStateData.PlayerPosition).GetNode("Items").AddChild(player);
+        Player = _character.Instantiate<GridCellItem>();
+        GetNode<PlayerController>("/root/PlayerController").Player = Player;
+        Player.Name = "Player";
+        grid.GetChild(gameStateData.PlayerPosition).GetNode("Items").AddChild(Player);
 
         // load enemy
-        GridCellItem enemy = _character.Instantiate<GridCellItem>();
-        enemy.Name = "Enemy";
-        grid.GetChild(gameStateData.EnemyPosition).GetNode("Items").AddChild(enemy);
-        enemy.TreeExited += onEnemyTreeExited;
+        GridCellItem Enemy = _character.Instantiate<GridCellItem>();
+        Enemy.Name = "Enemy";
+        grid.GetChild(gameStateData.EnemyPosition).GetNode("Items").AddChild(Enemy);
+        Enemy.TreeExited += onEnemyTreeExited;
 
         // if grid exists, remove
         Node existingGrid = GetNodeOrNull("/root/Main/World/Grid");

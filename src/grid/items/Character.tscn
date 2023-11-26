@@ -1,16 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://2xekg4erhoc2"]
 
-[ext_resource type="Script" path="res://src/grid/GridCellItem.cs" id="1_tr6kt"]
+[ext_resource type="PackedScene" uid="uid://dfphxtcg2lp26" path="res://src/grid/GridCellItem.tscn" id="1_okex3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_objd5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4gggk"]
+[sub_resource type="BoxMesh" id="BoxMesh_y52vb"]
 material = SubResource("StandardMaterial3D_objd5")
 
-[node name="Character" type="Node3D"]
-script = ExtResource("1_tr6kt")
+[node name="Character" instance=ExtResource("1_okex3")]
 Attackable = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_4gggk")
+mesh = SubResource("BoxMesh_y52vb")
+
+[node name="Name" parent="UI" index="0"]
+visible = false

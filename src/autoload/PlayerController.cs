@@ -31,7 +31,7 @@ public partial class PlayerController : Node
 
         GridCellItem attackableItem = context.GridCellTo.GetAttackable();
 
-        if (attackableItem != null)
+        if (attackableItem != null && context.GridCellItem != attackableItem)
         {
             context.GridCellItemTarget = attackableItem;
 
