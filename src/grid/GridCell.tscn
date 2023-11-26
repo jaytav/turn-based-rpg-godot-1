@@ -1,7 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxdhtltba043f"]
+[gd_scene load_steps=8 format=3 uid="uid://bxdhtltba043f"]
 
 [ext_resource type="Script" path="res://src/grid/GridCell.cs" id="1_uerrx"]
 [ext_resource type="PackedScene" uid="uid://henfahf37jkw" path="res://src/grid/items/Floor.tscn" id="2_oxv4j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ho0si"]
+albedo_color = Color(0.203922, 0.584314, 0.443137, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uhfk2"]
+material = SubResource("StandardMaterial3D_ho0si")
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uiwu"]
+albedo_color = Color(0.898039, 0.482353, 0.478431, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_il7xg"]
+material = SubResource("StandardMaterial3D_5uiwu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1y4r6"]
 size = Vector3(2, 1, 2)
@@ -13,11 +26,26 @@ script = ExtResource("1_uerrx")
 
 [node name="Floor" parent="Items" instance=ExtResource("2_oxv4j")]
 
+[node name="Highlight" type="Node3D" parent="."]
+
+[node name="Move" type="MeshInstance3D" parent="Highlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+visible = false
+mesh = SubResource("PlaneMesh_uhfk2")
+skeleton = NodePath("../..")
+
+[node name="Attack" type="MeshInstance3D" parent="Highlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+visible = false
+mesh = SubResource("PlaneMesh_il7xg")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_1y4r6")
 
+[connection signal="child_entered_tree" from="Items" to="." method="onItemsChildEnteredTree"]
+[connection signal="child_exiting_tree" from="Items" to="." method="onItemsChildExitedTree"]
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="onStaticBody3dMouseEntered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="onStaticBody3dMouseExited"]

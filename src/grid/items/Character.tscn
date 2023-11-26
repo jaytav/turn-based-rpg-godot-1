@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2xekg4erhoc2"]
+[gd_scene load_steps=5 format=3 uid="uid://2xekg4erhoc2"]
 
 [ext_resource type="PackedScene" uid="uid://dfphxtcg2lp26" path="res://src/grid/GridCellItem.tscn" id="1_okex3"]
+[ext_resource type="Script" path="res://src/grid/items/Character.cs" id="2_6q4i1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_objd5"]
 
@@ -8,11 +9,8 @@
 material = SubResource("StandardMaterial3D_objd5")
 
 [node name="Character" instance=ExtResource("1_okex3")]
-Attackable = true
+script = ExtResource("2_6q4i1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_y52vb")
-
-[node name="Name" parent="UI" index="0"]
-visible = false

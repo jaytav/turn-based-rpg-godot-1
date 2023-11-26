@@ -2,32 +2,56 @@ using Godot;
 
 public partial class GridCell : Node3D
 {
-    public GridCellItem GetAttackable()
+    public Character Character;
+
+    public override void _Ready()
     {
         foreach (GridCellItem item in GetNode("Items").GetChildren())
         {
-            if (item.Attackable)
-            {
-                return item;
-            }
+            onItemsChildEnteredTree(item);
         }
+    }
 
-        return null;
+    private void onItemsChildEnteredTree(Node node)
+    {
+        if (node is Character)
+        {
+            Character = (Character)node;
+        }
+    }
+
+    private void onItemsChildExitedTree(Node node)
+    {
+        if (node is Character)
+        {
+            Character = null;
+        }
     }
 
     private void onStaticBody3dMouseEntered()
     {
-        foreach (GridCellItem item in GetNode("Items").GetChildren())
+        if (Character != null)
         {
-            item.GetNode<AnimationPlayer>("UI/Name/AnimationPlayer").Play("fade_in");
+            if (Character.Name == "Enemy")
+            {
+                Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
+                GetNode<MeshInstance3D>("Highlight/Attack").Show();
+            }
+        }
+        else
+        {
+            Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
+            GetNode<MeshInstance3D>("Highlight/Move").Show();
         }
     }
 
     private void onStaticBody3dMouseExited()
     {
-        foreach (GridCellItem item in GetNode("Items").GetChildren())
+        Input.SetDefaultCursorShape(Input.CursorShape.Arrow);
+
+        foreach (MeshInstance3D highlight in GetNode("Highlight").GetChildren())
         {
-            item.GetNode<AnimationPlayer>("UI/Name/AnimationPlayer").PlayBackwards("fade_in");
+            highlight.Hide();
         }
     }
 }

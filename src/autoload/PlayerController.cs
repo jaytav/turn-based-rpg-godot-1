@@ -29,11 +29,9 @@ public partial class PlayerController : Node
         context.GridCellFrom = Player.GetParent().GetParent<GridCell>();
         context.GridCellItem = Player;
 
-        GridCellItem attackableItem = context.GridCellTo.GetAttackable();
-
-        if (attackableItem != null && context.GridCellItem != attackableItem)
+        if (context.GridCellTo.Character != null && context.GridCellItem != context.GridCellTo.Character)
         {
-            context.GridCellItemTarget = attackableItem;
+            context.GridCellItemTarget = context.GridCellTo.Character;
 
             Attack attack = new();
             attack.Context = context;
