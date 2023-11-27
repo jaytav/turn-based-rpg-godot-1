@@ -37,6 +37,7 @@ size_flags_horizontal = 3
 text = "Game Data Name"
 label_settings = SubResource("LabelSettings_rjmis")
 vertical_alignment = 1
+text_overrun_behavior = 3
 
 [node name="DeleteButton" type="Button" parent="Button"]
 layout_mode = 2

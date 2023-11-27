@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://codpqvwn75b3u"]
+[gd_scene load_steps=3 format=3 uid="uid://codpqvwn75b3u"]
 
 [ext_resource type="Script" path="res://src/scenes/ui/screens/class_select/ClassSelectScreen.cs" id="1_yy5v3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i3n1b"]
 font_size = 48
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_gv2sm"]
 
 [node name="ClassSelectScreen" type="Control"]
 layout_mode = 3
@@ -31,20 +29,31 @@ label_settings = SubResource("LabelSettings_i3n1b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharactersContainer" type="HBoxContainer" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -196.0
-offset_bottom = 324.0
+offset_left = 512.0
+offset_top = 188.0
+offset_right = -512.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Start"
+
+[node name="ClassSelectItems" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CharactersContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_gv2sm")
+[connection signal="pressed" from="StartButton" to="." method="onStartButtonPressed"]
