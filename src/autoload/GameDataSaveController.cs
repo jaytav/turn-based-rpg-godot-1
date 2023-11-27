@@ -17,15 +17,7 @@ public partial class GameDataSaveController : Node
         string gameDataDir = gameData.ResourcePath.Substring(0, gameData.ResourcePath.Length - 5);
         string gameStateDataDir = $"{gameDataDir}/game_states";
 
-        GameStateData gameStateData = gameDataLoadController.GameStateData ?? new GameStateData();
-
-        // handle new game, initialise data
-        if (!FileAccess.FileExists(gameData.ResourcePath))
-        {
-            // game state data directory
-            DirAccess.MakeDirRecursiveAbsolute(gameStateDataDir);
-        }
-
+        GameStateData gameStateData = gameDataLoadController.GameStateData;
         gameStateData.ResourceName = DirAccess.GetFilesAt(gameStateDataDir).Length.ToString();
         gameStateData.ResourcePath = $"{gameStateDataDir}/{gameStateData.ResourceName}.tres";
         gameData.GameStates.Insert(0, gameStateData);

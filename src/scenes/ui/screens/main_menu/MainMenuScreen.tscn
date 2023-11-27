@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.cs" id="1_ocmt7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_s8nga"]
+font_size = 48
+
 [sub_resource type="Animation" id="Animation_85nuo"]
-resource_name = "fade_in_continue_button_detail"
+resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -42,11 +45,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7kah0"]
 _data = {
-"fade_in_continue_button_detail": SubResource("Animation_85nuo")
+"fade_in": SubResource("Animation_85nuo")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_s8nga"]
-font_size = 48
 
 [node name="MainMenuScreen" type="Control"]
 layout_mode = 3
@@ -56,11 +56,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ocmt7")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_7kah0")
-}
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -92,6 +87,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "game data name"
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContinueButtonDetail"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7kah0")
+}
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1

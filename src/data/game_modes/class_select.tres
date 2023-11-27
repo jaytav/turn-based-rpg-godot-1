@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kksu85gneysi"]
+
+[ext_resource type="Script" path="res://src/data/GameModeData.cs" id="1_y051j"]
+
+[resource]
+script = ExtResource("1_y051j")
+ScreenName = "ClassSelectScreen"

@@ -18,6 +18,6 @@ public partial class GameDataLoadController : Node
         // duplicate self so changes don't affect already saved state
         GameStateData = (GameStateData)GameStateData.Duplicate();
 
-        GetNode<Node3D>("/root/Main/World").Visible = true;
+        GetNode<ScreenController>("/root/ScreenController").ChangeScreen(GameStateData.GameMode.ScreenName);
     }
 }

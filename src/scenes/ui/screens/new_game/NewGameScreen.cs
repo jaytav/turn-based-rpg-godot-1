@@ -10,17 +10,17 @@ public partial class NewGameScreen : Screen
 
     private void onCreateButtonPressed()
     {
-        if (GetNode<LineEdit>("NameLineEdit").Text.Length == 0)
+        string name = GetNode<LineEdit>("NameLineEdit").Text;
+
+        if (name.Length == 0)
         {
             GD.PushWarning("NewGameScreen: onCreateButtonPressed(): Failed, name is empty");
             return;
         }
 
-        // create and save game
-        GameData gameData = new GameData();
-        gameData.ResourceName = GetNode<LineEdit>("NameLineEdit").Text;
-        gameData.ResourcePath = $"res://data/games/{gameData.GetInstanceId()}.tres";
-        GetNode<GameDataSaveController>("/root/GameDataSaveController").Save(gameData);
+        // create and load new game
+        GameData gameData = GetNode<GameDataCreateController>("/root/GameDataCreateController").Create(name);
+        GetNode<GameDataLoadController>("/root/GameDataLoadController").Load(gameData, gameData.GameStates[0]);
     }
 
     public override void Exit()

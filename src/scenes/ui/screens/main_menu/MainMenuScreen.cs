@@ -43,11 +43,11 @@ public partial class MainMenuScreen : Screen
 
     private void onContinueButtonMouseEntered()
     {
-        GetNode<AnimationPlayer>("AnimationPlayer").Play("fade_in_continue_button_detail");
+        GetNode<AnimationPlayer>("ContinueButtonDetail/AnimationPlayer").Play("fade_in");
     }
 
     private void onContinueButtonMouseExited()
     {
-        GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("fade_in_continue_button_detail");
+        GetNode<AnimationPlayer>("ContinueButtonDetail/AnimationPlayer").PlayBackwards("fade_in");
     }
 }
