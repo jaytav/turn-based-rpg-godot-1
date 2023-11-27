@@ -21,9 +21,6 @@ ConfigController="*res://src/autoload/ConfigController.cs"
 GameDataDeleteController="*res://src/autoload/GameDataDeleteController.cs"
 GameDataLoadController="*res://src/autoload/GameDataLoadController.cs"
 GameDataSaveController="*res://src/autoload/GameDataSaveController.cs"
-MouseController="*res://src/autoload/MouseController.cs"
-PlayerController="*res://src/autoload/PlayerController.cs"
-BattleController="*res://src/autoload/BattleController.cs"
 
 [display]
 

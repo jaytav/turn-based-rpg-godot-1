@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=8 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
 [ext_resource type="PackedScene" uid="uid://rtev2lys4wnb" path="res://src/scenes/ui/screens/new_game/NewGameScreen.tscn" id="2_2wkdg"]
 [ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
-[ext_resource type="PackedScene" uid="uid://cw14xiqmj50wa" path="res://src/grid/Grid.tscn" id="2_xdg65"]
-[ext_resource type="PackedScene" uid="uid://5rridrf6i5oq" path="res://src/scenes/ui/screens/battle/BattleScreen.tscn" id="5_elbe4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k6x2o"]
 sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -33,7 +31,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 12, 20)
 projection = 1
 current = true
-size = 10.0
+size = 8.0
 
 [node name="Environment" type="Node3D" parent="World"]
 
@@ -45,8 +43,6 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 light_energy = 0.5
 shadow_enabled = true
 
-[node name="Grid" parent="World" instance=ExtResource("2_xdg65")]
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MainMenuScreen" parent="UI" instance=ExtResource("2_r25fk")]
@@ -56,7 +52,4 @@ visible = false
 visible = false
 
 [node name="LoadGameScreen" parent="UI" instance=ExtResource("2_0j88g")]
-visible = false
-
-[node name="BattleScreen" parent="UI" instance=ExtResource("5_elbe4")]
 visible = false

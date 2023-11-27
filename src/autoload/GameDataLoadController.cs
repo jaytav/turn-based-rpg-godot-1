@@ -19,6 +19,5 @@ public partial class GameDataLoadController : Node
         GameStateData = (GameStateData)GameStateData.Duplicate();
 
         GetNode<Node3D>("/root/Main/World").Visible = true;
-        GetNode<BattleController>("/root/BattleController").Load(GameStateData);
     }
 }
