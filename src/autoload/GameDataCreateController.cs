@@ -21,7 +21,7 @@ public partial class GameDataCreateController : Node
         GameStateData gameStateData = new();
         gameStateData.ResourceName = DirAccess.GetFilesAt(gameStateDataDir).Length.ToString();
         gameStateData.ResourcePath = $"{gameStateDataDir}/{gameStateData.ResourceName}.tres";
-        gameStateData.GameMode = GD.Load<GameModeData>("res://src/data/game_modes/class_select.tres");
+        gameStateData.GameMode = GameModeData.ByName("class_select");
         gameStateData.Character = new();
         gameData.GameStates.Insert(0, gameStateData);
 

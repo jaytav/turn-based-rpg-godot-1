@@ -22,6 +22,7 @@ GameDataDeleteController="*res://src/autoload/GameDataDeleteController.cs"
 GameDataLoadController="*res://src/autoload/GameDataLoadController.cs"
 GameDataSaveController="*res://src/autoload/GameDataSaveController.cs"
 GameDataCreateController="*res://src/autoload/GameDataCreateController.cs"
+GameModeController="*res://src/autoload/GameModeController.cs"
 
 [display]
 

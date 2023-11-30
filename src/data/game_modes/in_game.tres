@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cypq422eb7efy"]
+
+[ext_resource type="Script" path="res://src/data/GameModeData.cs" id="1_ple12"]
+
+[resource]
+script = ExtResource("1_ple12")
+ScreenName = "InGameScreen"

@@ -9,6 +9,12 @@ public partial class ClassSelectItem : Control
 
     public override void _Ready()
     {
+        // allows keeping in scene to view in editor
+        if (CharacterClassData == null) {
+            QueueFree();
+            return;
+        }
+
         GetNode<Button>("Button").Pressed += onButtonPressed;
         GetNode<Label>("Button/Title").Text = CharacterClassData.ResourceName;
         GetNode<Label>("Button/HealthPoints").Text = CharacterClassData.Stats.HealthPoints.Value.ToString();

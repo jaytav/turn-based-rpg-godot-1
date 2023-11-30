@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://codpqvwn75b3u"]
+[gd_scene load_steps=4 format=3 uid="uid://codpqvwn75b3u"]
 
 [ext_resource type="Script" path="res://src/scenes/ui/screens/class_select/ClassSelectScreen.cs" id="1_yy5v3"]
+[ext_resource type="PackedScene" uid="uid://dipfjpnnyerqi" path="res://src/scenes/ui/screens/class_select/class_select_item/ClassSelectItem.tscn" id="2_0kjym"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i3n1b"]
 font_size = 48
@@ -56,5 +57,14 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="ClassSelectItem" parent="ClassSelectItems" instance=ExtResource("2_0kjym")]
+layout_mode = 2
+
+[node name="ClassSelectItem2" parent="ClassSelectItems" instance=ExtResource("2_0kjym")]
+layout_mode = 2
+
+[node name="ClassSelectItem3" parent="ClassSelectItems" instance=ExtResource("2_0kjym")]
+layout_mode = 2
 
 [connection signal="pressed" from="StartButton" to="." method="onStartButtonPressed"]

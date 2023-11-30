@@ -1,8 +1,8 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bb4ri4avlw5ga"]
 
-[ext_resource type="Script" path="res://src/data/character/CharacterStatData.cs" id="1_mdu3x"]
+[ext_resource type="Script" path="res://src/data/character/CharacterStatData.cs" id="1_plpjq"]
 
 [resource]
-script = ExtResource("1_mdu3x")
+script = ExtResource("1_plpjq")
 Value = 3
 MaxValue = 0

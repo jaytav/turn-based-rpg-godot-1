@@ -18,6 +18,7 @@ public partial class GameDataLoadController : Node
         // duplicate self so changes don't affect already saved state
         GameStateData = (GameStateData)GameStateData.Duplicate();
 
-        GetNode<ScreenController>("/root/ScreenController").ChangeScreen(GameStateData.GameMode.ScreenName);
+        // load game mode
+        GetNode<GameModeController>("/root/GameModeController").LoadGameMode(GameStateData.GameMode);
     }
 }

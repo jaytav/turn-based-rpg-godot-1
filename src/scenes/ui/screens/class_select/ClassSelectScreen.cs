@@ -7,10 +7,13 @@ public partial class ClassSelectScreen : Screen
 
     public override void Enter()
     {
+        // refresh ClassSelectItem
+        foreach (Node classSelectItem in GetNode("ClassSelectItems").GetChildren()) {
+            classSelectItem.QueueFree();
+        }
+
         GetNode<Button>("StartButton").Disabled = true;
-
         ButtonGroup classSelectItemButtonGroup = new ButtonGroup();
-
         string[] files = DirAccess.GetFilesAt("res://src/data/character/classes");
 
         foreach (string file in files)
@@ -32,7 +35,14 @@ public partial class ClassSelectScreen : Screen
     private void onStartButtonPressed()
     {
         GD.Print($"ClassSelectScreen: onStartButtonPressed(): {_selectedCharacterClassData.ResourceName}");
-        // update character class data and update game mode here (battle, in game)?
+
+        // update character class data to the selected
+        GameDataLoadController gameDataLoadController = GetNode<GameDataLoadController>("/root/GameDataLoadController");
+        gameDataLoadController.GameStateData.Character.Class = _selectedCharacterClassData;
+
+        // change game mode to in_game
+        GameModeData changeGameMode = GameModeData.ByName("in_game");
+        GetNode<GameModeController>("/root/GameModeController").ChangeGameMode(changeGameMode);
     }
 
     private void onClassSelectItemPressed(CharacterClassData characterClassData)
