@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dofuyy2qqdxj6"]
+
+[ext_resource type="Resource" uid="uid://cct4iqdf62epu" path="res://src/data/character/classes/mage/mage_character_stats_health_points.tres" id="1_eru4b"]
+[ext_resource type="Script" path="res://src/data/character/CharacterStatsData.cs" id="2_qh3uu"]
+
+[resource]
+script = ExtResource("2_qh3uu")
+HealthPoints = ExtResource("1_eru4b")

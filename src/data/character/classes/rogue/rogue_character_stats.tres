@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bliprnmp4pfwf"]
+
+[ext_resource type="Resource" uid="uid://ddtgvrrd2lgtk" path="res://src/data/character/classes/rogue/rogue_character_stats_health_points.tres" id="1_wj85b"]
+[ext_resource type="Script" path="res://src/data/character/CharacterStatsData.cs" id="2_uhpkl"]
+
+[resource]
+script = ExtResource("2_uhpkl")
+HealthPoints = ExtResource("1_wj85b")

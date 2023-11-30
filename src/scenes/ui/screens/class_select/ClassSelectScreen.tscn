@@ -42,6 +42,7 @@ offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Start"
 
 [node name="ClassSelectItems" type="HBoxContainer" parent="."]

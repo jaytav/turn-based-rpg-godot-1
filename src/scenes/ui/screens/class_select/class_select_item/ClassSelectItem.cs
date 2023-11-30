@@ -11,6 +11,7 @@ public partial class ClassSelectItem : Control
     {
         GetNode<Button>("Button").Pressed += onButtonPressed;
         GetNode<Label>("Button/Title").Text = CharacterClassData.ResourceName;
+        GetNode<Label>("Button/HealthPoints").Text = CharacterClassData.Stats.HealthPoints.Value.ToString();
     }
 
     private void onButtonPressed()
