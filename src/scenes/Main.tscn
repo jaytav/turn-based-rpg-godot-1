@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvm5nwxh8upsv"]
+[gd_scene load_steps=11 format=3 uid="uid://cvm5nwxh8upsv"]
 
 [ext_resource type="Script" path="res://src/scenes/Main.cs" id="1_gejv4"]
 [ext_resource type="PackedScene" uid="uid://dqqablqofb623" path="res://src/scenes/ui/screens/load_game/LoadGameScreen.tscn" id="2_0j88g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8t5o4yjnxf5b" path="res://src/scenes/ui/screens/main_menu/MainMenuScreen.tscn" id="2_r25fk"]
 [ext_resource type="PackedScene" uid="uid://codpqvwn75b3u" path="res://src/scenes/ui/screens/class_select/ClassSelectScreen.tscn" id="5_k8wdo"]
 [ext_resource type="PackedScene" uid="uid://cgxfepcf7pj1s" path="res://src/scenes/ui/screens/in_game/InGameScreen.tscn" id="6_5nlfe"]
+[ext_resource type="PackedScene" uid="uid://bvw4nb5lvwbql" path="res://src/scenes/ui/screens/battle/BattleScreen.tscn" id="7_3sq7f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k6x2o"]
 sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -60,4 +61,7 @@ visible = false
 visible = false
 
 [node name="InGameScreen" parent="UI" instance=ExtResource("6_5nlfe")]
+visible = false
+
+[node name="BattleScreen" parent="UI" instance=ExtResource("7_3sq7f")]
 visible = false

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgxfepcf7pj1s"]
+[gd_scene load_steps=3 format=3 uid="uid://cgxfepcf7pj1s"]
 
 [ext_resource type="Script" path="res://src/scenes/ui/screens/in_game/InGameScreen.cs" id="1_5vnkj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32r68"]
+font_size = 48
 
 [node name="InGameScreen" type="Control"]
 layout_mode = 3
@@ -12,7 +15,32 @@ grow_vertical = 2
 script = ExtResource("1_5vnkj")
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "in game screen (placeholder)"
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "In Game Screen"
+label_settings = SubResource("LabelSettings_32r68")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattleButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = -36.0
+offset_right = -448.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Battle"
+
+[connection signal="pressed" from="BattleButton" to="." method="onBattleButtonPressed"]
