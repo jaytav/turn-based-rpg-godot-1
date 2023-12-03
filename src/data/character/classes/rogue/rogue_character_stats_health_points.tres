@@ -1,8 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ddtgvrrd2lgtk"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ddtgvrrd2lgtk"]
 
+[ext_resource type="Texture2D" uid="uid://c1o87werqibfx" path="res://assets/textures/rectangle.png" id="1_0eqhc"]
 [ext_resource type="Script" path="res://src/data/character/CharacterStatData.cs" id="1_fjx54"]
 
 [resource]
 script = ExtResource("1_fjx54")
 Value = 2
 MaxValue = 0
+Icon = ExtResource("1_0eqhc")
+Modulate = Color(0.859, 0.439, 0.576, 1)

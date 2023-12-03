@@ -34,8 +34,6 @@ public partial class ClassSelectScreen : Screen
 
     private void onStartButtonPressed()
     {
-        GD.Print($"ClassSelectScreen: onStartButtonPressed(): {_selectedCharacterClassData.ResourceName}");
-
         // update character class data to the selected
         GameDataLoadController gameDataLoadController = GetNode<GameDataLoadController>("/root/GameDataLoadController");
         gameDataLoadController.GameStateData.Character.Class = _selectedCharacterClassData;

@@ -23,6 +23,12 @@ public partial class CharacterStatData : Resource
         set { setMaxValue(value); }
     }
 
+    [Export]
+    public Texture2D Icon = GD.Load<Texture2D>("res://assets/textures/rectangle.png");
+
+    [Export]
+    public Color Modulate = Colors.White;
+
     private int _value;
     private int _maxValue;
 
