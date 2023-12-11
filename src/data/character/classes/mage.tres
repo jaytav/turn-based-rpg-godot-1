@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bhjfun8iuldw2"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bhjfun8iuldw2"]
 
 [ext_resource type="Resource" uid="uid://dofuyy2qqdxj6" path="res://src/data/character/classes/mage/mage_character_stats.tres" id="1_nyc6n"]
+[ext_resource type="Resource" uid="uid://cxy684nlswvjg" path="res://src/data/character/classes/mage/mage_inventory.tres" id="1_sveso"]
 [ext_resource type="Script" path="res://src/data/character/CharacterClassData.cs" id="3_dr7xe"]
 
 [resource]
 resource_name = "Mage"
 script = ExtResource("3_dr7xe")
 Stats = ExtResource("1_nyc6n")
+Inventory = ExtResource("1_sveso")

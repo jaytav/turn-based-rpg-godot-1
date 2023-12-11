@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cr0ppdey3v1sl"]
+
+[ext_resource type="Resource" uid="uid://bclhosugjjm2r" path="res://src/data/inventory/items/health_potion.tres" id="1_6wjib"]
+[ext_resource type="Script" path="res://src/data/inventory/InventoryItemData.cs" id="2_fccl2"]
+
+[resource]
+script = ExtResource("2_fccl2")
+Item = ExtResource("1_6wjib")
+Quantity = 1

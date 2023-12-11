@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bclhosugjjm2r"]
+
+[ext_resource type="Script" path="res://src/data/inventory/ItemData.cs" id="1_1xqt6"]
+[ext_resource type="Texture2D" uid="uid://c1o87werqibfx" path="res://assets/textures/rectangle.png" id="1_yslax"]
+
+[resource]
+resource_name = "Health Potion"
+script = ExtResource("1_1xqt6")
+Icon = ExtResource("1_yslax")
+StackSize = 1
+Modulate = Color(0.898039, 0.490196, 0.411765, 1)

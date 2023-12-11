@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c1o87werqibfx" path="res://assets/textures/rectangle.png" id="2_x8b56"]
 
 [node name="ClassSelectItem" type="Control"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(128, 192)
 layout_mode = 3
 anchor_right = 0.111111
-anchor_bottom = 0.197531
+anchor_bottom = 0.296296
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -28,13 +28,8 @@ toggle_mode = true
 [node name="Title" type="Label" parent="Button"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 6.48499e-05
-offset_top = -64.0
-offset_right = 6.10352e-05
-offset_bottom = -4.57764e-05
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Class Name"
@@ -43,10 +38,13 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="HealthPointsContainer" type="HBoxContainer" parent="Button"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 128.0
-offset_bottom = 128.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_bottom = 32.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button/HealthPointsContainer"]
@@ -60,6 +58,38 @@ size_flags_vertical = 4
 texture = ExtResource("2_x8b56")
 
 [node name="TextureRect3" type="TextureRect" parent="Button/HealthPointsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_x8b56")
+
+[node name="InventoryItemsContainerPanel" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -56.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InventoryItemsContainer" type="HBoxContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Button/InventoryItemsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_x8b56")
+
+[node name="TextureRect2" type="TextureRect" parent="Button/InventoryItemsContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("2_x8b56")

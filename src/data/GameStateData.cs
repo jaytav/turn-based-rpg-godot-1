@@ -7,4 +7,7 @@ public partial class GameStateData : Resource
 
     [Export]
     public CharacterData Character = new();
+
+    [Export]
+    public InventoryData Inventory = new();
 }

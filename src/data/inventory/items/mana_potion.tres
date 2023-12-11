@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://baw8jsomjsx26"]
+
+[ext_resource type="Texture2D" uid="uid://c1o87werqibfx" path="res://assets/textures/rectangle.png" id="1_6o4pu"]
+[ext_resource type="Script" path="res://src/data/inventory/ItemData.cs" id="2_yv4bu"]
+
+[resource]
+resource_name = "Mana Potion"
+script = ExtResource("2_yv4bu")
+Icon = ExtResource("1_6o4pu")
+StackSize = 1
+Modulate = Color(0.34902, 0.662745, 0.831373, 1)

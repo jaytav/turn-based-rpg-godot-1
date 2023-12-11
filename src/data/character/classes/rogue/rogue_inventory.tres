@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://7c6faekela4k"]
+
+[ext_resource type="Resource" uid="uid://cr0ppdey3v1sl" path="res://src/data/character/classes/rogue/rogue_inventory_item_0.tres" id="1_xf8mj"]
+[ext_resource type="Resource" uid="uid://dr3llc0iifo0x" path="res://src/data/character/classes/rogue/rogue_inventory_item_1.tres" id="2_j1l7d"]
+[ext_resource type="Script" path="res://src/data/inventory/InventoryData.cs" id="3_hq7c4"]
+
+[resource]
+script = ExtResource("3_hq7c4")
+Items = [ExtResource("1_xf8mj"), ExtResource("2_j1l7d")]

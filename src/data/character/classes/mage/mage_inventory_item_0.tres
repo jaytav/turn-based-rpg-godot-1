@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://biqpdx4xbufhv"]
+
+[ext_resource type="Resource" uid="uid://baw8jsomjsx26" path="res://src/data/inventory/items/mana_potion.tres" id="1_2iqht"]
+[ext_resource type="Script" path="res://src/data/inventory/InventoryItemData.cs" id="2_j3qef"]
+
+[resource]
+script = ExtResource("2_j3qef")
+Item = ExtResource("1_2iqht")
+Quantity = 2

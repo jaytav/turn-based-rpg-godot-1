@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://gcvknuk86kj0"]
+
+[ext_resource type="Resource" uid="uid://dndjt33w62buf" path="res://src/data/character/classes/knight/knight_inventory_item_0.tres" id="1_ptndm"]
+[ext_resource type="Script" path="res://src/data/inventory/InventoryData.cs" id="1_uot4t"]
+
+[resource]
+script = ExtResource("1_uot4t")
+Items = [ExtResource("1_ptndm")]

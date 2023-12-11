@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dxx3hn14d16ys"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dxx3hn14d16ys"]
 
+[ext_resource type="Resource" uid="uid://7c6faekela4k" path="res://src/data/character/classes/rogue/rogue_inventory.tres" id="1_uuqak"]
 [ext_resource type="Resource" uid="uid://bliprnmp4pfwf" path="res://src/data/character/classes/rogue/rogue_character_stats.tres" id="1_xdj4n"]
 [ext_resource type="Script" path="res://src/data/character/CharacterClassData.cs" id="3_2xume"]
 
@@ -7,3 +8,4 @@
 resource_name = "Rogue"
 script = ExtResource("3_2xume")
 Stats = ExtResource("1_xdj4n")
+Inventory = ExtResource("1_uuqak")
